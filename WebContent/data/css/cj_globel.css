@@ -278,12 +278,6 @@ ul,li{list-style-type:none;margin:0px;padding:0px;}
 /* 数字轮转 */
 .w-num-blackbg div{ display: block; }
 @keyframes num_rotate {
-	from {margin-top:0px;}
-	to {margin-top: -600px;}
+	from {margin-top:-600px;}
+	to {margin-top: 25px}
 }
-@keyframes num_rotate_stop {
-	from {margin-top:0px;}
-	to {margin-top: -70px;}
-}
-
-

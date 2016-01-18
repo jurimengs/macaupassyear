@@ -209,34 +209,26 @@ function stopRoll(obj, awardInfoarr, index){
 	var phone = awardInfoarr[0];
 	var words = phone.charAt(index);
 	
-	if(index != 10) {
-		if(!!words) {
-			$(obj).text(words);
-			$(obj).animate({"margin-top":"0px"});
-			$(obj).css({
-				//animationIterationCount: "1",
-				animation: ""
+	var jqobj = $(obj);
+	if(!!words) {
+		jqobj.text(words);
+		//jqobj.animate({"margin-top":"0px"});
+		jqobj.css({
+			animationIterationCount: "1"
+		});
+		if(index == 10) {
+			// 如果是最后一个
+			// 先给个空值
+			jqobj.hide();
+			
+			stopPlay();
+			var memname = awardInfoarr[2];
+			jqobj.fadeIn(100, function(){
+				$("#terfont").parent().append("<font id='terMemname' class='w-level'> &nbsp;<strong>"+memname+"</strong></font>");
+				//$("#terMemname").fadeIn();
 			});
-			return;
 		}
-	} else {
-		// 如果是最后一个
-		// 先给个空值
-		$(obj).hide();
-		$(obj).text(words);
-		// 然后停止动画
-		$(obj).css({
-			animation: ""
-		});
-		
-		stopPlay();
-		var memname = awardInfoarr[2];
-		$(obj).fadeIn(3000, function(){
-			$("#terfont").parent().append("<font id='terMemname' style='display: none;' class='w-level'> &nbsp;<strong>"+memname+"</strong></font>");
-			$("#terMemname").fadeIn();
-		});
 	}
-	//$(obj).text("8");
 }
 
 function showGunius(callback){

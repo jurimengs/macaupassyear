@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -37,6 +36,14 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 	
 	public void tocj(HttpServletRequest request,HttpServletResponse response)
 			throws Exception{
+		HttpSession session = request.getSession();
+		// ≥ÈΩ±π‹¿Ì‘±
+		if(session.getAttribute("cjmanager") == null) {
+			// »Áπ˚Œ¥µ«¬º
+			this.forward("/view/cjlogin.jsp", request, response);
+			return;
+		}
+		
 		SandYearService yService = (SandYearService)SpringUtil.getBean("sandYearService");
 		JSONObject jsonObject = yService.queryCurrentAward();
 		
@@ -60,30 +67,46 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		return;
 	}
 	
+	public void cjchecklgn(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String enterpwd = request.getParameter("enterpwd");
+		String _enterpwd = PropertiesUtil.getValue("award", "enterpwd");
+		
+		JSONObject noticeData = new JSONObject();
+		if(enterpwd.equals(_enterpwd)) {
+			noticeData.put("respCode", "10000");
+			request.getSession().setAttribute("cjmanager", "logined");
+		} else {
+			noticeData.put("respCode", "");
+			noticeData.put("respMsg", "√‹¬Î¥ÌŒÛ");
+		}
+		this.write(noticeData, "utf-8", response);				
+		return;
+	}
+	
 	public void queryYearMember(HttpServletRequest request,HttpServletResponse response)
 			throws Exception{
-			String phoneNumber = request.getParameter("phoneNumber");
-			String type = "1";
-			String name = request.getParameter("userName");
-			
-			HttpSession session = request.getSession(true);
-			
-			JSONObject noticeData = new JSONObject();
-			
-			SandYearService yService = (SandYearService)SpringUtil.getBean("sandYearService");
-			JSONObject json = yService.queryYearMember(phoneNumber, type, name);
-			
-			String respCode = json.getString(CommonConstant.RESP_CODE);
-			noticeData.put("respCode", respCode);
-			if(respCode.equals("10000")) {
-				JSONObject usermeg = json.getJSONObject("usermeg");
-				session.setAttribute("usermeg", usermeg);	
-			} else {
-				String respMsg = json.getString(CommonConstant.RESP_MSG);				
-				noticeData.put("respMsg", respMsg);
-			}
-			this.write(noticeData, "utf-8", response);				
-			return;
+		String phoneNumber = request.getParameter("phoneNumber");
+		String type = "1";
+		String name = request.getParameter("userName");
+		
+		HttpSession session = request.getSession(true);
+		
+		JSONObject noticeData = new JSONObject();
+		
+		SandYearService yService = (SandYearService)SpringUtil.getBean("sandYearService");
+		JSONObject json = yService.queryYearMember(phoneNumber, type, name);
+		
+		String respCode = json.getString(CommonConstant.RESP_CODE);
+		noticeData.put("respCode", respCode);
+		if(respCode.equals("10000")) {
+			JSONObject usermeg = json.getJSONObject("usermeg");
+			session.setAttribute("usermeg", usermeg);	
+		} else {
+			String respMsg = json.getString(CommonConstant.RESP_MSG);				
+			noticeData.put("respMsg", respMsg);
+		}
+		this.write(noticeData, "utf-8", response);				
+		return;
 		
 	}
 
