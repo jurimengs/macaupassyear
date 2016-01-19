@@ -19,6 +19,7 @@
 	<div class="size-xxxl">未中<span class="size-s marg_lef_1em">奖</span></div>
     <div class="clear">
     	<div class="fl_left">恭喜发财，猴年大吉！</div>
+    	<div class="fl_left"><a href="/macaupassyear/queryMyPrize.do">不死心, 点击刷新看看</a></div>
     </div>
 </div>
 <div class="clear">

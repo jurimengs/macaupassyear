@@ -21,7 +21,7 @@
 </style>
 </head>
 
-<body>
+<body class="shaker">
 
 <div class="cloudbg">
 	<ul class="prizebg">

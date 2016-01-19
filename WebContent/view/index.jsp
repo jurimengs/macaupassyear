@@ -7,13 +7,41 @@
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>杉德年会-首页</title>
 <%@ include file="common.jsp"%>
-    <link rel="stylesheet" href="/data/css/cj_globel.css" type="text/css">
     <link rel="stylesheet" href="/data/css/base.css?v=1" type="text/css">
 	<link rel="stylesheet" href="/data/css/public.css" type="text/css">
 	<link rel="stylesheet" href="/data/css/index.css" type="text/css">
 	<link rel="stylesheet" type="text/css" href="/data/css/widget/slider/slider.css" />
     <link rel="stylesheet" type="text/css" href="/data/css/widget/slider/slider.default.css" />
-<script src="/data/js/zepto.min.js" type="text/javascript"></script>
+	<script src="/data/js/zepto.min.js" type="text/javascript"></script>
+	<style type="text/css">
+	
+	
+	/* 页面抖一抖 */
+	.shaker {
+		animation: shake 0.5s 1;
+		-webkit-animation: shake 0.5s infinite; /*Safari and Chrome*/
+	}
+	
+	@keyframes shake
+	{
+	0% {transform: rotate(15deg) translate(0, 0px);}
+	20% {transform: rotate(-5deg) translate(0px, 0px);}
+	40% {transform: rotate(15deg) translate(0, 0px);}
+	60% {transform: rotate(-5deg) translate(0, 0px);}
+	80% {transform: rotate(15deg) translate(0, 0px);}
+	100% {transform: rotate(-5deg) translate(0px, 0px);}
+	}
+	
+	@-webkit-keyframes shake /*Safari and Chrome*/
+	{
+	0% {transform: rotate(15deg) translate(0, 0px);}
+	20% {transform: rotate(-5deg) translate(0px, 0px);}
+	40% {transform: rotate(15deg) translate(0, 0px);}
+	60% {transform: rotate(-5deg) translate(0, 0px);}
+	80% {transform: rotate(15deg) translate(0, 0px);}
+	100% {transform: rotate(-5deg) translate(0px, 0px);}
+	}
+	</style>
 </head>
 <body class="body-bg">
 <!--top-->
@@ -127,13 +155,13 @@ function shakeaward(){
 }
 
 
-function shakesuccess(data){
+function shakesuccess(data){alert('s');
 	if(data.respCode == "10000") {
 		// 页面摇一下，然后定时2秒后进入我的奖品页面
 		setTimeout(function(){
 			alert("抽奖已经开始, 当抽奖完成后，点击确定查看中奖信息");
 			window.location.href="/macaupassyear/queryMyPrize.do";
-		}, 2000);
+		}, 1000);
 	} else {
 		alert(data.respMsg);
 	}

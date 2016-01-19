@@ -281,34 +281,3 @@ ul,li{list-style-type:none;margin:0px;padding:0px;}
 	from {margin-top:-600px;}
 	to {margin-top: 25px}
 }
-
-/* 页面抖一抖 */
-.shaker {
-	animation:mymove 0.5s 1;
-	-webkit-animation:mymove 0.5s infinite; /*Safari and Chrome*/
-}
-
-@keyframes shake
-{
-0% {transform: rotate(15deg) translate(0, 0px);}
-20% {transform: rotate(-5deg) translate(0px, 0px);}
-40% {transform: rotate(15deg) translate(0, 0px);}
-60% {transform: rotate(-5deg) translate(0, 0px);}
-80% {transform: rotate(15deg) translate(0, 0px);}
-100% {transform: rotate(-5deg) translate(0px, 0px);}
-}
-
-@-webkit-keyframes shake /*Safari and Chrome*/
-{
-0% {transform: rotate(15deg) translate(0, 0px);}
-10% {transform: rotate(-5deg) translate(0px, 0px);}
-20% {transform: rotate(15deg) translate(0px, 0px);}
-30% {transform: rotate(-5deg) translate(0px, 0px);}
-40% {transform: rotate(15deg) translate(0, 0px);}
-50% {transform: rotate(-5deg) translate(0px, 0px);}
-60% {transform: rotate(15deg) translate(0, 0px);}
-70% {transform: rotate(-5deg) translate(0px, 0px);}
-80% {transform: rotate(15deg) translate(0, 0px);}
-90% {transform: rotate(-5deg) translate(0px, 0px);}
-100% {transform: rotate(15deg) translate(0px, 0px);}
-}
