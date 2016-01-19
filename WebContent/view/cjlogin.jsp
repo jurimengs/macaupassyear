@@ -67,7 +67,7 @@
     	<p class="load_big_tit size-xl center"> <span style="color:#ff962d;">杉德年会</span>抽奖宝</p>
         
     </div>
-    <form action="/sandYear/tocj.do" method="post" id="loginform">
+    <form action="/macaupassyear/tocj.do" method="post" id="loginform">
 	</form>
 	
     <div class="load-input">
@@ -94,7 +94,7 @@ function checklgn(){
 	}
 	$.ajax({
 		type:"post",
-		url:"/sandYear/cjchecklgn.do",
+		url:"/macaupassyear/cjchecklgn.do",
 		data:{
 			enterpwd: enterpwd
 		},

@@ -47,7 +47,7 @@
 	                <div id="tdiv" class="winpri-box-bg center" style="display: none; opacity: 0;">
 	                    <span >
 	                    	<font id="terfont" class="w-level" style="background-size: 400px auto;">
-	                    		补抽独占鳌头奖
+	                    		补抽特等奖
 	                    	</font>
 	                    </span>
 	                    <input type="hidden" name="selectLeve" id="selectLeve" value="${currentAwards }"/>
@@ -71,11 +71,11 @@
 	                <!-- wudengjiang sidengjiang sandengjiang -->
 	                <div id="odiv" class="winpri-simp-box-bg center" style="background-size: 400px auto;display:block;">
                     	<font id="opersitTerfont" class="w-level">
-                    		<c:if test="${currentAwards eq '5' }">补抽捂嘴偷乐奖</c:if>
-                    		<c:if test="${currentAwards eq '4' }">补抽喜笑颜开奖</c:if>
-                    		<c:if test="${currentAwards eq '3' }">补抽幸福满足奖</c:if>
-                    		<c:if test="${currentAwards eq '2' }">补抽开怀大笑奖</c:if>
-                    		<c:if test="${currentAwards eq '1' }">补抽无敌幸运奖</c:if>
+                    		<c:if test="${currentAwards eq '5' }">补抽五等奖</c:if>
+                    		<c:if test="${currentAwards eq '4' }">补抽四等奖</c:if>
+                    		<c:if test="${currentAwards eq '3' }">补抽三等奖</c:if>
+                    		<c:if test="${currentAwards eq '2' }">补抽二等奖</c:if>
+                    		<c:if test="${currentAwards eq '1' }">补抽一等奖</c:if>
                     	</font>
                     </div>
                     <!-- chuizi -->
@@ -111,7 +111,7 @@
         <!--add over-->
 		<button class="close" onclick="document.getElementById('maskid').style.display='none'; "><h1 style="display:block; margin-top:0px;"><img src="../data/images/close.png" width="32" height="32"></h1>
 		</button>
-		<div class="top-mid-bg" id="drawNumber"><font class="top-mid-txt">恭喜以下捂嘴偷乐奖获得者</font></div>
+		<div class="top-mid-bg" id="drawNumber"><font class="top-mid-txt">恭喜以下五等奖获得者</font></div>
 		<div class="modal-body" id="drawList">
             
         </div>
@@ -144,7 +144,7 @@ function change(){
 	if(level=='1'){
 		// 接下来要抽1等奖， 要把2等奖的人全收了。
 		recyleAllUser();
-		$("#opersitTerfont").text("补抽无敌幸运奖");
+		$("#opersitTerfont").text("补抽一等奖");
 	}
 	if(level=='t'){
 		// 接下来要抽特等奖， 要把1等奖的人全收了。
@@ -167,7 +167,7 @@ function draw(){
 	}
 	$.ajax({
 		type: "post",
-		url: "/sandYear/bucj.do",
+		url: "/macaupassyear/bucj.do",
 		timeout: 45000,
 		data: {
 			level: leveValue,
@@ -184,20 +184,20 @@ function draw_success(data, status){
 		var currentLevel = $("#selectLeve").val();
 		if(currentLevel=='5'){
 			$("#selectLeve").val("4");
-			$("#opersitTerfont").text("补抽喜笑颜开奖");
-			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下捂嘴偷乐奖获得者</font>";
+			$("#opersitTerfont").text("补抽四等奖");
+			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下五等奖获得者</font>";
 			document.getElementById("drawNumber").innerHTML=drawNumHtml;
 		}
 		if(currentLevel=='4'){
 			$("#selectLeve").val("3");
-			$("#opersitTerfont").text("补抽喜笑颜开奖");
-			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下喜笑颜开奖获得者</font>";
+			$("#opersitTerfont").text("补抽三等奖");
+			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下四等奖获得者</font>";
 			document.getElementById("drawNumber").innerHTML=drawNumHtml;
 		}
 		if(currentLevel=='3'){
 			$("#selectLeve").val("2");
-			$("#opersitTerfont").text("补抽幸福满足奖");
-			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下幸福满足奖获得者</font>";
+			$("#opersitTerfont").text("补抽二等奖");
+			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下三等奖获得者</font>";
 			document.getElementById("drawNumber").innerHTML=drawNumHtml;
 		}
 		if(currentLevel=='2'){

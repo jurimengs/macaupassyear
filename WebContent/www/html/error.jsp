@@ -45,7 +45,7 @@ function codebarScannCallback(res){
 中奖：${rewardarrary }
 
 
-<form action="/sandYear/queryYearMember.do" method="post">
+<form action="/macaupassyear/queryYearMember.do" method="post">
 	<input type="text" name="phoneNumber" value="15921385617" />
 	<input type="hidden" name="type" value="1" />
 	<input type="submit" value="submit" />

@@ -13,6 +13,6 @@
 <body>
 ${errmsg.respCode }
 ${errmsg.respMsg }
-<a href="javascript:void(0);" onclick="window.location.href='/sandYear/toHelp.do';">返回扫码页面</a>
+<a href="javascript:void(0);" onclick="window.location.href='/macaupassyear/toHelp.do';">返回扫码页面</a>
 </body>
 </html>

@@ -20,7 +20,7 @@
     <div class="global-titleb">
     	<c:if test="${empty usermeg.pname }">请投出您宝贵的一票</c:if>
     	<c:if test="${!empty usermeg.pname }">投票结果</c:if>
-    	<a class="global-titleb" href="/sandYear/queryProgram.do">(点击刷新)</a>
+    	<a class="global-titleb" href="/macaupassyear/queryProgram.do">(点击刷新)</a>
     </div>
 </div>
 <div class="global-navb vote-inp">
@@ -48,7 +48,7 @@
 	  </c:forEach>
     </ul>
     <c:if test="${empty usermeg.pname }">
-	    <form id="form" action="/sandYear/vote.do" onsubmit="return check();" method="post">
+	    <form id="form" action="/macaupassyear/vote.do" onsubmit="return check();" method="post">
 	    	<input id="voteHidden" name="pnumber" type="hidden" />
 	    </form>
     	<div class="vote-btn" onclick="vote();">投票</div>

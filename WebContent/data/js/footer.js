@@ -13,7 +13,7 @@
 	var footerhtml = new Array();
 		footerhtml.push("<div class=\"my-footer\">");
 		footerhtml.push("<ul class=\"square-list clr\">");
-		footerhtml.push("<li><p class=\"square-list-content index in_nianhui\" onclick=\"window.location.href='/sandYear/toIndex.do';\">年会</p></li>");
+		footerhtml.push("<li><p class=\"square-list-content index in_nianhui\" onclick=\"window.location.href='/macaupassyear/toIndex.do';\">年会</p></li>");
 		/*footerhtml.push("<li><p class=\"square-list-content"+(selecttype == '' ? "" : "")+"\" "+(selecttype == 'activity' ? "" : "onclick=\"javascript:SD.goUrl('');\"")+" ></p></li>");
 		footerhtml.push("<li><p class=\"square-list-content"+(selecttype == '' ? "" : "")+"\" "+(selecttype == 'user_more' ? "" : "onclick=\"javascript:SD.goUrl('');\"")+"></p></li>");*/
 		footerhtml.push("</ul>");

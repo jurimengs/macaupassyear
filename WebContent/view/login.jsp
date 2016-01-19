@@ -89,7 +89,7 @@
     	<p class="load_big_tit size-xl center">欢迎登录 <span style="color:#ff962d;"> 杉德年会</span></p>
         
     </div>
-    <form action="/sandYear/toIndex.do" method="post" id="loginform">
+    <form action="/macaupassyear/toIndex.do" method="post" id="loginform">
     <div class="load-input">
 		<input type="text" placeholder="姓名" id="userName" class="input loadinbg center">
         <div class="load-inp-line"></div>
@@ -161,7 +161,7 @@ function checklgn(){
 	}
 	$.ajax({
 		type:"post",
-		url:"/sandYear/queryYearMember.do",
+		url:"/macaupassyear/queryYearMember.do",
 		data:{
 			phoneNumber:mobile,
 			userName:username

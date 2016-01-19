@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/data/css/index.css" type="text/css">
 </head>
 <body>
-<form action="/sandYear/queryAwardUser.do">
+<form action="/macaupassyear/queryAwardUser.do">
 	<input name="moible" id="moible" style="border: 1px solid #ccc;"/>
 	<input type="submit" value="查询" />
 </form>
@@ -37,7 +37,7 @@
 			</td>
 			<td>
 				<c:if test="${!empty aim.rewardstate && aim.isprize != '0'}">
-					<a href="http://payment-test.sandpay.com.cn/sandYear/acceptAward.do?phoneNumber=${moible }">发奖</a>
+					<a href="http://payment-test.sandpay.com.cn/macaupassyear/acceptAward.do?phoneNumber=${moible }">发奖</a>
 				</c:if>
 			</td>
 		</tr>
@@ -48,7 +48,7 @@
 <script>
 
 $(document).ready(function(){
-	var moible = "http://payment-test.sandpay.com.cn/sandYear/acceptAward.do?phoneNumber="+"${yearMember.moible}";
+	var moible = "http://payment-test.sandpay.com.cn/macaupassyear/acceptAward.do?phoneNumber="+"${yearMember.moible}";
 	jQuery('#qrcode').qrcode({width: 138,height: 138,text: moible});
 	var isprize = document.getElementById("prizenu").value;
 	if(isprize=="0"){	
@@ -63,7 +63,7 @@ $(document).ready(function(){
 });
 
 function myprize(){
-	window.location.href="/sandYear/queryMyPrize.do?phoneNumber=${yearMember.moible}";
+	window.location.href="/macaupassyear/queryMyPrize.do?phoneNumber=${yearMember.moible}";
 }
 </script>
 </body>

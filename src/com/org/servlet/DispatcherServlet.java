@@ -20,6 +20,7 @@ import org.springframework.util.StringUtils;
 import com.org.common.CommonConstant;
 import com.org.common.PageConstant;
 import com.org.util.SpringUtil;
+import com.org.utils.PropertiesUtil;
 
 public class DispatcherServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -62,10 +63,7 @@ public class DispatcherServlet extends HttpServlet {
 				servletName = _servletName.substring(0, _servletName.indexOf("/"));
 				mtdName = _servletName.substring(_servletName.lastIndexOf("/")+1);
 			}
-			servletName += "Controller";
 			
-			// Controller从spring容器中取得
-			CommonController aim = (CommonController)SpringUtil.getBean(servletName);
 			/*****判断是否为重复提交*************************/
 			String token=request.getParameter("token");
 			if(token!=null){
@@ -87,6 +85,19 @@ public class DispatcherServlet extends HttpServlet {
 				}
 			}
 			/*******************************************/
+			
+
+			String relativeController = PropertiesUtil.getValue("namespace", servletName);
+			if(org.apache.commons.lang.StringUtils.isNotEmpty(relativeController)) {
+				// 如果存在配置
+				servletName = relativeController;
+			} else {
+				servletName += "Controller";
+			}
+			
+			// Controller从spring容器中取得
+			CommonController aim = (CommonController)SpringUtil.getBean(servletName);
+			
 			if(StringUtils.isEmpty(mtdName)){
 				aim.post(request, response);
 			} else {

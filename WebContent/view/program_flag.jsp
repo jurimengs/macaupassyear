@@ -25,7 +25,7 @@
 	        	<div class="fl_left" style="width:18px;">&nbsp;</div>
         	</c:if>
         	${entity.pname}
-        	<form id="form" action="/sandYear/updateProgramStartFlag.do" onsubmit="return check();" method="post">
+        	<form id="form" action="/macaupassyear/updateProgramStartFlag.do" onsubmit="return check();" method="post">
 		    	<input value="更新节目状态" type="submit" />
 		    	<input name="isstart" type="hidden" value="${entity.isstart }" />
 		    	<input name="pnumber" type="hidden" value="${entity.pnumber }" />

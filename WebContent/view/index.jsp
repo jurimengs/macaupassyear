@@ -17,20 +17,20 @@
 <body class="body-bg">
 <!--top-->
 <div class="ico-more clear active_view">
- <img src="/data/images/ico-more.png"  width="36" height="36" onclick="gotoUrl('/sandYear/toHelp.do')">
+ <img src="/data/images/ico-more.png"  width="36" height="36" onclick="gotoUrl('/macaupassyear/toHelp.do')">
 </div>
 <!--top over-->
 <div class="main-ico clear">
 	<ul>
-    	<li class="center ico-seat active_view" onclick="window.location.href='/sandYear/querySameTableMemberList.do?phoneNumber=${usermeg.moible}';"><a href="javascript:void(0);" >我的席位</a></li>
-        <li class="center ico-prize active_view" onclick="window.location.href='/sandYear/queryMyPrize.do?phoneNumber=${usermeg.moible}';"><a href="javascript:void(0);">我的奖品</a></li>
+    	<li class="center ico-seat active_view" onclick="window.location.href='/macaupassyear/querySameTableMemberList.do?phoneNumber=${usermeg.moible}';"><a href="javascript:void(0);" >我的席位</a></li>
+        <li class="center ico-prize active_view" onclick="window.location.href='/macaupassyear/queryMyPrize.do?phoneNumber=${usermeg.moible}';"><a href="javascript:void(0);">我的奖品</a></li>
     </ul>
 </div>
 <div class="sub-ico clear">
 	<ul>
     	<li class="center ico-traffic active_view" onclick="window.location.href='/view/traffic.jsp';"><a href="/view/traffic.jsp">交通</a></li>
         <li class="center ico-parking active_view" onclick="window.location.href='/view/parking.html';"><a>泊车</a></li>
-        <li class="center ico-vote active_view" onclick="window.location.href='/sandYear/queryProgram.do';"><a href="/sandYear/queryProgram.do">投票</a></li>
+        <li class="center ico-vote active_view" onclick="window.location.href='/macaupassyear/queryProgram.do';"><a href="/macaupassyear/queryProgram.do">投票</a></li>
     </ul>
 </div>
 <div class="index-slider clear">
@@ -83,10 +83,10 @@
 	
 </ul>
 <!--  
-<form action="/sandYear/queryMyPrize.do" method="post" id="myPrize">
+<form action="/macaupassyear/queryMyPrize.do" method="post" id="myPrize">
  <input type="hidden" name="phoneNumber" value="${usermeg.moible}"/>
 </form>
-<form action="/sandYear/querySameTableMemberList.do" method="post" id="mySeat">
+<form action="/macaupassyear/querySameTableMemberList.do" method="post" id="mySeat">
  <input type="hidden" name="phoneNumber" value="${usermeg.moible}"/>
 </form>
 -->
@@ -152,7 +152,7 @@ function mySeat(){
 	document.getElementById("mySeat").submit();
 	/* $.ajax({
 		type:"post",
-		url:"/sandYear/querySameTableMemberList.do",
+		url:"/macaupassyear/querySameTableMemberList.do",
 		data:{
 			phoneNumber:mobile
 		},

@@ -18,7 +18,7 @@
 		headerhtml.push("<header class=\"global-nav\">");
 		if(headerbackurl!=""){
 			//headerhtml.push("<span class=\"global-back\" onclick=\"javascript:SD.goUrl('"+headerbackurl+"');\"></span>");
-			headerhtml.push("<span class=\"global-back active_view\" onclick=\"window.location.href='/sandYear/toIndex.do';\"></span>");
+			headerhtml.push("<span class=\"global-back active_view\" onclick=\"window.location.href='/macaupassyear/toIndex.do';\"></span>");
 		}
 		headerhtml.push("<h2 class=\"global-title\">"+headername+"</h2>");
 		headerhtml.push("</header>");

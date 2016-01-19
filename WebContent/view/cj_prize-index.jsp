@@ -7,8 +7,8 @@
 <title>抽奖</title>
 <%@ include file="common.jsp"%>
 <script type="text/javascript" src="/js/jquery-1.11.1.min.js?v=<%=b %>"></script>
-<link href="../data/css/cj_globel.css" rel="stylesheet" type="text/css">
-<link href="../data/css/cj_pop-win-prize.css" rel="stylesheet" type="text/css">
+<link href="/data/css/cj_globel.css" rel="stylesheet" type="text/css">
+<link href="/data/css/cj_pop-win-prize.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" charset="utf-8" src="/js/browserinfo.js"></script>
 <script type="text/javascript" charset="utf-8" src="/js/business.js"></script>
 
@@ -109,7 +109,7 @@
 		<div class="modal-bg bg-left"></div>
 	    <div class="modal-bg bg-right"></div><!--&times;-->
 	       <!--add over-->
-		<button class="close" onclick="document.getElementById('maskid').style.display='none'; "><h1 style="display:block; margin-top:0px;"><img src="../data/images/close.png" width="32" height="32"></h1>
+		<button class="close" onclick="document.getElementById('maskid').style.display='none'; "><h1 style="display:block; margin-top:0px;"><img src="/data/images/close.png" width="32" height="32"></h1>
 		</button>
 		<div class="top-mid-bg" id="drawNumber"><font class="top-mid-txt">恭喜以下五等奖获得者</font></div>
 		<div class="modal-body" id="drawList"></div>
@@ -125,11 +125,11 @@
 		   	<!--add-->
 			<div class="modal-bg bg-left"></div>
 		    <div class="modal-bg bg-right"></div> 
-			<button class="close" onclick="document.getElementById('bucjmask').style.display='none'; "><h1 style="display:block; margin-top:0px;"><img src="../data/images/close.png" width="32" height="32"></h1>
+			<button class="close" onclick="document.getElementById('bucjmask').style.display='none'; "><h1 style="display:block; margin-top:0px;"><img src="/data/images/close.png" width="32" height="32"></h1>
 			</button>
 			<div class="top-mid-bg" id="drawNumber"><font class="top-mid-txt">请设置补抽奖的个数</font></div>
 			<div class="modal-body" id="drawList" style="text-align:center;">
-				<form action="/sandYear/tobucj.do" onsubmit="return submitToBucj();" method="post" target="_blank">
+				<form action="/macaupassyear/tobucj.do" onsubmit="return submitToBucj();" method="post" target="_blank">
 					<input type="text" id="buCounts" name="buCounts" />
 					<input type="hidden" id="currentLevel" name="currentAwards" value="${currentAwards }" />
 					<input type="submit" class="btn" value="进入补抽奖" />
@@ -192,7 +192,7 @@ function draw(){
 	}
 	$.ajax({
 		type: "post",
-		url: "/sandYear/userDraw.do",
+		url: "/macaupassyear/userDraw.do",
 		timeout: 45000,
 		data: {
 			level: leveValue
@@ -204,7 +204,6 @@ function draw(){
 }
 
 function bucj(){
-	var leveValue = document.getElementById("currentLevel").value;
 	$("#bucjmask").show();
 }
 

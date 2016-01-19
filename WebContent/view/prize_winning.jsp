@@ -58,7 +58,7 @@ $(function(){
 });
 
 $(document).ready(function(){
-	var moible = "http://payment-test.sandpay.com.cn/sandYear/acceptAward.do?phoneNumber="+"${yearMember.moible}";
+	var moible = "http://payment-test.sandpay.com.cn/macaupassyear/acceptAward.do?phoneNumber="+"${yearMember.moible}";
 	jQuery('#qrcode').qrcode({width: 138,height: 138,text: moible});
 	var isprize = document.getElementById("prizenu").value;
 	if(isprize=="0"){	
@@ -76,7 +76,7 @@ function myprize(){
 var mobile = ${yearMember.moible};
 	$.ajax({
 		type:"post",
-		url:"/sandYear/lotteryDrawState.do",
+		url:"/macaupassyear/lotteryDrawState.do",
 		data:{
 			phoneNumber:mobile
 		},

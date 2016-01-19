@@ -49,10 +49,10 @@
 <input type="button"  value="清空用户投票信息" onclick="updateYear('3')"/><br /><br />
 <br/><br />
 <div><a href="award_query.jsp">领奖失败补领(如果扫码领奖出现故障可以使用此功能代替)</a></div><br /><br />
-<div><a href="/sandYear/toProgramFlag.do">当前节目标记(每个节目完成后，应由人工标记该节目为已完成，届时方可抽奖)</a></div>
+<div><a href="/macaupassyear/toProgramFlag.do">当前节目标记(每个节目完成后，应由人工标记该节目为已完成，届时方可抽奖)</a></div>
 <!-- 
 <div>
-	<form action="/sandYear/tobucj.do" method="post" target="_blank">
+	<form action="/macaupassyear/tobucj.do" method="post" target="_blank">
 	<select name="currentAwards">
 	<option value="t">特</option>
 	<option value="1">一</option>
@@ -71,7 +71,7 @@
  function updateYear(type) {
 	 $.ajax({
 			type:"post",
-			url:"/sandYearManage/updateYear.do",
+			url:"/macaupassyearmanage/updateYear.do",
 			data:{
 				type:type
 			},
@@ -105,7 +105,7 @@ function updateMem(){
 	
 	$.ajax({
 		type:"post",
-		url:"/sandYearManage/updateMem.do",
+		url:"/macaupassyearmanage/updateMem.do",
 		data:{
 			memname:memname,
 			company:company,
