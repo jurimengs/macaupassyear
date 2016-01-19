@@ -7,6 +7,7 @@
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>杉德年会-首页</title>
 <%@ include file="common.jsp"%>
+    <link rel="stylesheet" href="/data/css/cj_globel.css" type="text/css">
     <link rel="stylesheet" href="/data/css/base.css?v=1" type="text/css">
 	<link rel="stylesheet" href="/data/css/public.css" type="text/css">
 	<link rel="stylesheet" href="/data/css/index.css" type="text/css">
@@ -29,7 +30,7 @@
 <div class="sub-ico clear">
 	<ul>
     	<li class="center ico-traffic active_view" onclick="window.location.href='/view/traffic.jsp';"><a href="/view/traffic.jsp">交通</a></li>
-        <li class="center ico-parking active_view" onclick="window.location.href='/view/parking.html';"><a>泊车</a></li>
+        <li class="center ico-parking active_view" onclick="shakeaward();"><a>摇一摇</a></li>
         <li class="center ico-vote active_view" onclick="window.location.href='/macaupassyear/queryProgram.do';"><a href="/macaupassyear/queryProgram.do">投票</a></li>
     </ul>
 </div>
@@ -111,6 +112,36 @@
 <script type="text/javascript" src="../data/js/service.js"></script>
 <script type="text/javascript" src="/js/cookie.min.js"></script>
 <script>
+
+function shakeaward(){
+	$("body").addClass("shaker");
+	$.ajax({
+		type:"post",
+		url:"/macaupassyear/shakeaward.do",
+		data:{},
+		dataType:"json",
+		cache:"false",
+		success : shakesuccess,
+		error : shakeerror
+	});
+}
+
+
+function shakesuccess(data){
+	if(data.respCode == "10000") {
+		// 页面摇一下，然后定时2秒后进入我的奖品页面
+		setTimeout(function(){
+			alert("抽奖已经开始, 当抽奖完成后，点击确定查看中奖信息");
+			window.location.href="/macaupassyear/queryMyPrize.do";
+		}, 2000);
+	} else {
+		alert(data.respMsg);
+	}
+}
+
+function shakeerror(){
+	alert("系统异常");
+}
 
 
 function fmtRewardState(types){

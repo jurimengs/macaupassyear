@@ -30,7 +30,29 @@ public class UserManager {
 	 * 所有用户手机号备份
 	 */
 	private static JSONArray userBackup = new JSONArray();
+	/**
+	 * 临时用户池，用于三等奖、特等奖用户池
+	 */
+	private static JSONArray temporary = new JSONArray();
 
+	/**
+	 * 添加到临时抽奖用户列表
+	 * @param phonenum
+	 */
+	public static void addUserToTemporary(String phonenum){
+		if(userMap.containsKey(phonenum)){
+			temporary.add(phonenum);
+		}
+	}
+	
+	public static JSONArray getAllTemporaryUser(){
+		return temporary;
+	}
+	
+	public static void initAllTemporaryUser(){
+		temporary = new JSONArray();
+	}
+	
 	public static void initUserInfo(){
 		// 初始化这三个数据
 		// userMap

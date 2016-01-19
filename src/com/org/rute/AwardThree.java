@@ -23,6 +23,6 @@ public class AwardThree extends ParentAward implements MessageHander{
 	public JSONArray getMessage() {
 		String level = paramsMap.get("level");
 		int awardCount = Integer.valueOf(PropertiesUtil.getValue("award", level));
-		return init(CommonConstant.THIRD_USERLIST, level, awardCount);
+		return initTemporary(CommonConstant.THIRD_USERLIST, level, awardCount);
 	}
 }

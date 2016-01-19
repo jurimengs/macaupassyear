@@ -40,7 +40,7 @@ public class MessageController extends SmpHttpServlet implements CommonControlle
 		// response.setHeader("Cache-Control","no-cache"); 
 		// 不需要这行了，在dispatcher中已经添加了
 		// response.setDateHeader("Expires", 0);
-		this.write(toPush.toString(), CommonConstant.ENCODE_DEFAULT, response);
+		this.write(toPush.toString(), CommonConstant.UTF8, response);
 		response.getOutputStream().flush();
 		return;		
 	}

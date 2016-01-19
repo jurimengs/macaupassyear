@@ -10,12 +10,14 @@ import javax.servlet.http.HttpSession;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 
 import com.org.common.CommonConstant;
 import com.org.container.CommonContainer;
+import com.org.container.UserManager;
 import com.org.model.reflect.ReflectUtil;
 import com.org.rute.MessageHander;
 import com.org.rute.PushMessageRute;
@@ -29,8 +31,6 @@ import com.org.utils.WxUtil;
 
 @Controller
 public class SandYearController extends SmpHttpServlet implements CommonController{
-
-	
 	private static final long serialVersionUID = 1L;
 	private Log log = LogFactory.getLog(SandYearController.class);
 	
@@ -100,7 +100,7 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		noticeData.put("respCode", respCode);
 		if(respCode.equals("10000")) {
 			JSONObject usermeg = json.getJSONObject("usermeg");
-			session.setAttribute("usermeg", usermeg);	
+			session.setAttribute("usermeg", usermeg);
 		} else {
 			String respMsg = json.getString(CommonConstant.RESP_MSG);				
 			noticeData.put("respMsg", respMsg);
@@ -251,8 +251,16 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		}		
 	}
 	
-	public void queryMyPrize(HttpServletRequest request,HttpServletResponse response){
-		String phoneNumber = request.getParameter("phoneNumber");
+	public void queryMyPrize(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		
+		HttpSession session = request.getSession();
+		JSONObject usermeg = (JSONObject)session.getAttribute("usermeg");
+		if(usermeg == null) {
+			this.forward("/view/login.jsp", request, response);
+			return;
+		}
+		
+		String phoneNumber = usermeg.getString("moible");
 		SandYearService yService = (SandYearService)SpringUtil.getBean("sandYearService");
 		JSONObject json = yService.userDraw(phoneNumber, "", "1", "", "");
 		String respCode = json.getString(CommonConstant.RESP_CODE);
@@ -450,7 +458,48 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		Object obj = ReflectUtil.ref(aim, mtd, key, value);
 		JSONObject result = new JSONObject();
 		result.put("obj", obj);
-		this.write(result, "UTF-8", response);
+		this.write(result, CommonConstant.UTF8, response);
+	}
+	
+	public void shakeaward(HttpServletRequest request,HttpServletResponse response)throws Exception{
+		Object temp = CommonContainer.getData(CommonConstant.MESSAGE_TYPE);
+		String currentLevel = "";
+		JSONObject result = new JSONObject();
+		
+		if(temp == null) {
+			result.put("respCode", "");
+			result.put("respMsg", "抽奖还未开始,请稍候");
+			this.write(result, CommonConstant.UTF8, response);
+			return;
+		}
+		
+		currentLevel = temp.toString();
+		// 当前是四的时候，就可以准备下一个奖三等奖了，当前是一的时候，就可以准备特等奖了
+		if(currentLevel.equals(CommonConstant.AWARD_FOURTH) || currentLevel.equals(CommonConstant.AWARD_FIRST)) {
+
+			HttpSession session = request.getSession();
+			JSONObject usermeg = (JSONObject)session.getAttribute("usermeg");
+			// 先判断有没有中奖
+			if(StringUtils.isNotEmpty(usermeg.getString("rewardstate"))) {
+				result.put("respCode", "");
+				result.put("respMsg", "您已中奖, 不能再参与此次抽奖");
+				this.write(result, CommonConstant.UTF8, response);
+				return;
+			}
+			
+			String moible = usermeg.getString("moible");
+			// 如果是三等奖 特等奖
+			UserManager.addUserToTemporary(moible);
+			result.put("respCode", "10000");
+			result.put("respMsg", "您已进入抽奖队列,请等候抽奖结果");
+			this.write(result, CommonConstant.UTF8, response);
+			return;
+		} else {
+			result.put("respCode", "");
+			result.put("respMsg", "还没到我哦亲,请再等会吧");
+			this.write(result, CommonConstant.UTF8, response);
+			return;
+		}
 	}
 	
 	@Override

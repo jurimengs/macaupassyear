@@ -18,37 +18,6 @@
 	top: 50%;
 	opacity:0;
 }
-/* 页面抖一抖 */
-.cloudbg {
-	animation:mymove 0.5s 1;
-	-webkit-animation:mymove 0.5s infinite; /*Safari and Chrome*/
-}
-
-@keyframes mymove
-{
-0% {transform: rotate(15deg) translate(0, 0px);}
-20% {transform: rotate(-5deg) translate(0px, 0px);}
-40% {transform: rotate(15deg) translate(0, 0px);}
-60% {transform: rotate(-5deg) translate(0, 0px);}
-80% {transform: rotate(15deg) translate(0, 0px);}
-100% {transform: rotate(-5deg) translate(0px, 0px);}
-}
-
-@-webkit-keyframes mymove /*Safari and Chrome*/
-{
-0% {transform: rotate(15deg) translate(0, 0px);}
-10% {transform: rotate(-5deg) translate(0px, 0px);}
-20% {transform: rotate(15deg) translate(0px, 0px);}
-30% {transform: rotate(-5deg) translate(0px, 0px);}
-40% {transform: rotate(15deg) translate(0, 0px);}
-50% {transform: rotate(-5deg) translate(0px, 0px);}
-60% {transform: rotate(15deg) translate(0, 0px);}
-70% {transform: rotate(-5deg) translate(0px, 0px);}
-80% {transform: rotate(15deg) translate(0, 0px);}
-90% {transform: rotate(-5deg) translate(0px, 0px);}
-100% {transform: rotate(15deg) translate(0px, 0px);}
-}
-
 </style>
 </head>
 

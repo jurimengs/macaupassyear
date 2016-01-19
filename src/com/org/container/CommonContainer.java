@@ -72,6 +72,8 @@ public class CommonContainer {
 			paramIndex = i +1;
 			str += "?,";
 			params.put(paramIndex, data.getJSONObject(i).getString("moible"));
+			// 保存内存中用户的中奖状态
+			data.getJSONObject(i).put("rewardstate", level);
 		}
 		str = str.substring(0, str.length()-1);
 		upUserAwardSql += str;
