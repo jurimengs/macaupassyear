@@ -212,21 +212,14 @@ function stopRoll(obj, awardInfoarr, index){
 	var jqobj = $(obj);
 	if(!!words) {
 		jqobj.text(words);
-		//jqobj.animate({"margin-top":"0px"});
 		jqobj.css({
-			animationIterationCount: "1"
+			//animationIterationCount: "1"
+			animation:""
 		});
 		if(index == 10) {
-			// 如果是最后一个
-			// 先给个空值
-			jqobj.hide();
-			
 			stopPlay();
 			var memname = awardInfoarr[2];
-			jqobj.fadeIn(100, function(){
-				$("#terfont").parent().append("<font id='terMemname' class='w-level'> &nbsp;<strong>"+memname+"</strong></font>");
-				//$("#terMemname").fadeIn();
-			});
+			$("#terfont").parent().append("<font id='terMemname' class='w-level'> &nbsp;<strong>"+memname+"</strong></font>");
 		}
 	}
 }
