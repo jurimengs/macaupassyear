@@ -40,7 +40,7 @@ public class UserManager {
 	 * @param phonenum
 	 */
 	public static void addUserToTemporary(String phonenum){
-		if(userMap.containsKey(phonenum)){
+		if(userMap.containsKey(phonenum) && !temporary.contains(phonenum)){
 			temporary.add(phonenum);
 		}
 	}

@@ -489,6 +489,34 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		return;
 	}
 	
+	public void toguaj(HttpServletRequest request,HttpServletResponse response)throws Exception{
+
+		HttpSession session = request.getSession();
+		JSONObject usermeg = (JSONObject)session.getAttribute("usermeg");
+		if(usermeg == null) {
+			this.forward("/view/login.jsp", request, response);
+			return;
+		}
+		
+		JSONObject result = new JSONObject();
+		
+		// 先判断有没有中奖
+		if(StringUtils.isNotEmpty(usermeg.getString("rewardstate"))) {
+			result.put("respCode", "");
+			result.put("respMsg", "您已中奖, 不能再参与此次抽奖");
+			this.write(result, CommonConstant.UTF8, response);
+			return;
+		}
+		
+		String moible = usermeg.getString("moible");
+		// 如果是三等奖 特等奖
+		UserManager.addUserToTemporary(moible);
+		result.put("respCode", "10000");
+		result.put("respMsg", "您已进入抽奖队列,请等候抽奖结果");
+		this.write(result, CommonConstant.UTF8, response);
+		return;
+	}
+	
 	@Override
 	public void post(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {

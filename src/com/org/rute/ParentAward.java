@@ -130,6 +130,12 @@ public class ParentAward {
 			res.add(UserManager.getUser(aimPhonenum));
 		}
 		
+		// 将已中奖的用户从 未中奖用户池中去除
+		for (int i = 0; i < res.size(); i++) {
+			aimPhonenum = res.getJSONObject(i).getString("moible");
+			UserManager.removeAwardUser(aimPhonenum);
+		}
+		
 		// 抽奖完成后，初始化掉所有的临时用户，为下个抽奖备用
 		UserManager.initAllTemporaryUser();
 

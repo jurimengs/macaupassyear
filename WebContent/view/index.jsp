@@ -19,27 +19,27 @@
 	/* 页面抖一抖 */
 	.shaker {
 		animation: shake 0.5s 1;
-		-webkit-animation: webkitshake 0.5s 1; /*Safari and Chrome*/
+		-webkit-animation: shake 0.5s 1; /*Safari and Chrome*/
 	}
 	
 	@keyframes shake
 	{
-	0% {transform: rotate(15deg) translate(0, 0px);}
-	20% {transform: rotate(-5deg) translate(0px, 0px);}
-	40% {transform: rotate(15deg) translate(0, 0px);}
-	60% {transform: rotate(-5deg) translate(0, 0px);}
-	80% {transform: rotate(15deg) translate(0, 0px);}
-	100% {transform: rotate(-5deg) translate(0px, 0px);}
+		0% {transform: rotate(15deg) translate(0, 0px);}
+		20% {transform: rotate(-5deg) translate(0px, 0px);}
+		40% {transform: rotate(15deg) translate(0, 0px);}
+		60% {transform: rotate(-5deg) translate(0, 0px);}
+		80% {transform: rotate(15deg) translate(0, 0px);}
+		100% {transform: rotate(-5deg) translate(0px, 0px);}
 	}
 	
-	@-webkit-keyframes webkitshake /*Safari and Chrome*/
+	@-webkit-keyframes shake /*Safari and Chrome*/
 	{
-	0% {transform: rotate(15deg) translate(0, 0px);}
-	20% {transform: rotate(-5deg) translate(0px, 0px);}
-	40% {transform: rotate(15deg) translate(0, 0px);}
-	60% {transform: rotate(-5deg) translate(0, 0px);}
-	80% {transform: rotate(15deg) translate(0, 0px);}
-	100% {transform: rotate(-5deg) translate(0px, 0px);}
+		0% {-webkit-transform: rotate(15deg) translate(0, 0px);}
+		20% {-webkit-transform: rotate(-5deg) translate(0px, 0px);}
+		40% {-webkit-transform: rotate(15deg) translate(0, 0px);}
+		60% {-webkit-transform: rotate(-5deg) translate(0, 0px);}
+		80% {-webkit-transform: rotate(15deg) translate(0, 0px);}
+		100% {-webkit-transform: rotate(-5deg) translate(0px, 0px);}
 	}
 	</style>
 </head>
@@ -59,7 +59,7 @@
 	<ul>
     	<li class="center ico-traffic active_view" onclick="window.location.href='/view/traffic.jsp';"><a href="/view/traffic.jsp">交通</a></li>
         <li class="center ico-parking active_view" onclick="shakeaward();"><a>摇一摇</a></li>
-        <li class="center ico-vote active_view" onclick="window.location.href='/macaupassyear/queryProgram.do';"><a href="/macaupassyear/queryProgram.do">投票</a></li>
+        <li class="center ico-vote active_view" onclick=""><a href="/macaupassyear/toguaj.do">刮一刮</a></li>
     </ul>
 </div>
 <div class="index-slider clear">
@@ -156,21 +156,28 @@ function shakeaward(){
 
 
 function shakesuccess(data){
+	var msg = "";
 	if(data.respCode == "10000") {
-		// 页面摇一下，然后定时2秒后进入我的奖品页面
-		setTimeout(function(){
-			alert("您已进入抽奖队列, 当抽奖完成后点击\"我的奖品\"查看中奖信息");
-			//window.location.href="/macaupassyear/queryMyPrize.do";
-		}, 1000);
+		msg = "您已进入抽奖队列, 当抽奖完成后点击\"我的奖品\"查看中奖信息";
 	} else {
-		alert(data.respMsg);
+		msg = data.respMsg;
 	}
+	setTimeout(function(){
+		alert(msg);
+		initshake();
+	}, 2000);
 }
 
 function shakeerror(){
-	alert("系统异常");
+	setTimeout(function(){
+		alert("系统异常");
+		initshake();
+	}, 2000);
 }
 
+function initshake(){
+	$("body").removeClass("shaker");
+}
 
 function fmtRewardState(types){
 	if(types=='5'){

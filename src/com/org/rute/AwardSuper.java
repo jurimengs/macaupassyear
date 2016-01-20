@@ -24,6 +24,6 @@ public class AwardSuper extends ParentAward implements MessageHander{
 	public JSONArray getMessage() {
 		String level = paramsMap.get("level");
 		int awardCount = Integer.valueOf(PropertiesUtil.getValue("award", level));
-		return init(CommonConstant.SUPER_USERLIST, level, awardCount);
+		return initTemporary(CommonConstant.SUPER_USERLIST, level, awardCount);
 	}
 }
