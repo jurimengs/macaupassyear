@@ -888,9 +888,13 @@ public class StringUtil {
     }
      
 	public static void main(String [] args){
-		String s      = "sysCode[01]cardNo[7279906001000007]issueNo[050001]rechargeNo[0727990601000007]physicalNo[]expiredDate[20230528]";
+//		String s      = "sysCode[01]cardNo[7279906001000007]issueNo[050001]rechargeNo[0727990601000007]physicalNo[]expiredDate[20230528]";
+//		
+//		StringUtil.translateMap(s);
 		
-		StringUtil.translateMap(s);	
+		for (int i = 0; i < 5; i++) {
+    		System.out.println((int)(5*Math.random()));
+		}
 	}
 
 	public static String toEntityName(String fieldName, boolean toUpper) {
@@ -915,11 +919,21 @@ public class StringUtil {
     } 
     
     public static int[] randomCommon(int min, int max, int n){  
-        if (n > (max - min + 1) || max < min) {  
-               return null;  
-           }  
-        int[] result = new int[n];  
-        int count = 0;  
+    	if(max <= min) {
+    		return null;
+    	}
+    	int[] result;
+        if (n > max) {
+        	result = new int[max];
+        	// 如果目标个数n 大于实际数组个数max， 则只取max里面所有的索引即可
+        	for (int i = 0; i < max; i++) {
+        		result[i] = i;
+			}
+            return result;  
+        }
+        
+        int count = 0;
+        result = new int[n];
         while(count < n) {  
             int num = (int) (Math.random() * (max - min)) + min;  
             boolean flag = true;  
@@ -936,7 +950,7 @@ public class StringUtil {
         }  
         return result;  
     } 
-    
+
     public static Map<String,String> memMap = new HashMap<String, String>();
     static{
     	memMap.put("5", "1");

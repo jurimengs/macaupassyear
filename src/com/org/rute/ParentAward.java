@@ -113,9 +113,12 @@ public class ParentAward {
 		JSONArray res = new JSONArray();
 		// 为了公平，应该先一次性生成所有index
 		int min = 0;
-		int max = noAwardUser.size()-1;
+		int max = noAwardUser.size();
 		// 生成随机索引
 		int[] indexs = StringUtil.randomCommon(min, max, count);
+		if(indexs == null) {
+			return new JSONArray();
+		}
 
 		// 根据生成的随机索引，取arr对应的元素（该元素为手机号）
 		String aimPhonenum = null;

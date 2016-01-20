@@ -19,7 +19,7 @@
 	/* 页面抖一抖 */
 	.shaker {
 		animation: shake 0.5s 1;
-		-webkit-animation: shake 0.5s infinite; /*Safari and Chrome*/
+		-webkit-animation: webkitshake 0.5s 1; /*Safari and Chrome*/
 	}
 	
 	@keyframes shake
@@ -32,7 +32,7 @@
 	100% {transform: rotate(-5deg) translate(0px, 0px);}
 	}
 	
-	@-webkit-keyframes shake /*Safari and Chrome*/
+	@-webkit-keyframes webkitshake /*Safari and Chrome*/
 	{
 	0% {transform: rotate(15deg) translate(0, 0px);}
 	20% {transform: rotate(-5deg) translate(0px, 0px);}
@@ -155,12 +155,12 @@ function shakeaward(){
 }
 
 
-function shakesuccess(data){alert('s');
+function shakesuccess(data){
 	if(data.respCode == "10000") {
 		// 页面摇一下，然后定时2秒后进入我的奖品页面
 		setTimeout(function(){
-			alert("抽奖已经开始, 当抽奖完成后，点击确定查看中奖信息");
-			window.location.href="/macaupassyear/queryMyPrize.do";
+			alert("您已进入抽奖队列, 当抽奖完成后点击\"我的奖品\"查看中奖信息");
+			//window.location.href="/macaupassyear/queryMyPrize.do";
 		}, 1000);
 	} else {
 		alert(data.respMsg);

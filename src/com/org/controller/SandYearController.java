@@ -462,44 +462,31 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 	}
 	
 	public void shakeaward(HttpServletRequest request,HttpServletResponse response)throws Exception{
-		Object temp = CommonContainer.getData(CommonConstant.MESSAGE_TYPE);
-		String currentLevel = "";
+
+		HttpSession session = request.getSession();
+		JSONObject usermeg = (JSONObject)session.getAttribute("usermeg");
+		if(usermeg == null) {
+			this.forward("/view/login.jsp", request, response);
+			return;
+		}
+		
 		JSONObject result = new JSONObject();
 		
-		if(temp == null) {
+		// 先判断有没有中奖
+		if(StringUtils.isNotEmpty(usermeg.getString("rewardstate"))) {
 			result.put("respCode", "");
-			result.put("respMsg", "抽奖还未开始,请稍候");
+			result.put("respMsg", "您已中奖, 不能再参与此次抽奖");
 			this.write(result, CommonConstant.UTF8, response);
 			return;
 		}
 		
-		currentLevel = temp.toString();
-		// 当前是四的时候，就可以准备下一个奖三等奖了，当前是一的时候，就可以准备特等奖了
-		if(currentLevel.equals(CommonConstant.AWARD_FOURTH) || currentLevel.equals(CommonConstant.AWARD_FIRST)) {
-
-			HttpSession session = request.getSession();
-			JSONObject usermeg = (JSONObject)session.getAttribute("usermeg");
-			// 先判断有没有中奖
-			if(StringUtils.isNotEmpty(usermeg.getString("rewardstate"))) {
-				result.put("respCode", "");
-				result.put("respMsg", "您已中奖, 不能再参与此次抽奖");
-				this.write(result, CommonConstant.UTF8, response);
-				return;
-			}
-			
-			String moible = usermeg.getString("moible");
-			// 如果是三等奖 特等奖
-			UserManager.addUserToTemporary(moible);
-			result.put("respCode", "10000");
-			result.put("respMsg", "您已进入抽奖队列,请等候抽奖结果");
-			this.write(result, CommonConstant.UTF8, response);
-			return;
-		} else {
-			result.put("respCode", "");
-			result.put("respMsg", "还没到我哦亲,请再等会吧");
-			this.write(result, CommonConstant.UTF8, response);
-			return;
-		}
+		String moible = usermeg.getString("moible");
+		// 如果是三等奖 特等奖
+		UserManager.addUserToTemporary(moible);
+		result.put("respCode", "10000");
+		result.put("respMsg", "您已进入抽奖队列,请等候抽奖结果");
+		this.write(result, CommonConstant.UTF8, response);
+		return;
 	}
 	
 	@Override

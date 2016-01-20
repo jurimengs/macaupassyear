@@ -273,7 +273,11 @@ function draw_success(data, status){
 			for1 = drawList.length/5;
 			for(var n=0;n<for1;n++){
 				prizehtml+="<ul><li>";
-				for(var m=0;m<5;m++){
+				var linecount = 5;
+				if(for1 < 5) {
+					linecount = for1;
+				}
+				for(var m=0;m < linecount;m++){
 					prizehtml+="<div class=\"person_box fl_left\"><strong>"+drawList[i].memname+"<span class=\"com_name\">"+drawList[i].company+"</span></strong><dt>"+drawList[i].moible+"</dt></div>";
 					i=i+1;
 				}
