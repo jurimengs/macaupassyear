@@ -91,8 +91,8 @@
     </div>
     <form action="/macaupassyear/toIndex.do" method="post" id="loginform">
     <div class="load-input">
-		<input type="text" placeholder="姓名" id="userName" class="input loadinbg center">
-        <div class="load-inp-line"></div>
+		<!-- <input type="text" placeholder="姓名" id="userName" class="input loadinbg center">
+        <div class="load-inp-line"></div> -->
 		<input type="tel" placeholder="手机号" id="phoneNumber" class="input loadinbg center" >
 	</div>
 	</form>
@@ -146,25 +146,26 @@ function spreadBless(btn){
 	}
 }
 
-var reg = /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+//var reg = /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+var reg = /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})|(\d{8})$/;
 
 function checklgn(){
 	var mobile = $('#phoneNumber').val();
-	var username = $('#userName').val();
+	/* var username = $('#userName').val();
 	if(username=='') {
 		showerror("请输入姓名！");
 		return false;
-	}
+	} */
 	if(!reg.test(mobile)) {
-		showerror("请输入正确的手机号码！");
+		alert("请输入正确的手机号码！");
 		return false;
 	}
 	$.ajax({
 		type:"post",
 		url:"/macaupassyear/queryYearMember.do",
 		data:{
-			phoneNumber:mobile,
-			userName:username
+			phoneNumber:mobile
+			/* userName:username */
 		},
 		dataType:"json",
 		cache:"false",

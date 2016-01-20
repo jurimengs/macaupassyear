@@ -30,10 +30,9 @@ public class SandYearService {
 		try {
 			response = new JSONObject();			
 			if("1".equals(type)){//登录,返回用户信息,大奖信息
-				String sql = "select a.*, b.roleflag from smp_year_member a left join smp_year_manager b on a.moible = b.moible where a.moible=? and a.memname=?";
+				String sql = "select a.*, b.roleflag from smp_year_member a left join smp_year_manager b on a.moible = b.moible where a.moible=?";
 				Map<Integer , Object> params = new HashMap<Integer, Object>();
 				params.put(1, phoneNumber);
-				params.put(2, name);
 				CommonDao commonDao = (CommonDao)SpringUtil.getBean("commonDao");
 				JSONObject sym = commonDao.querySingle(sql, params, false);
 				if(sym==null){
