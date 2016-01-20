@@ -77,7 +77,7 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 			request.getSession().setAttribute("cjmanager", "logined");
 		} else {
 			noticeData.put("respCode", "");
-			noticeData.put("respMsg", "ÃÜÂë´íÎó");
+			noticeData.put("respMsg", "¿ÚÁî´íÎó");
 		}
 		this.write(noticeData, "utf-8", response);				
 		return;
