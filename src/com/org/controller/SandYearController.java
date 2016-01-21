@@ -87,14 +87,14 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 			throws Exception{
 		String phoneNumber = request.getParameter("phoneNumber");
 		String type = "1";
-		String name = request.getParameter("userName");
+		//String name = request.getParameter("userName");
 		
 		HttpSession session = request.getSession(true);
 		
 		JSONObject noticeData = new JSONObject();
 		
 		SandYearService yService = (SandYearService)SpringUtil.getBean("sandYearService");
-		JSONObject json = yService.queryYearMember(phoneNumber, type, name);
+		JSONObject json = yService.queryYearMember(phoneNumber, type);
 		
 		String respCode = json.getString(CommonConstant.RESP_CODE);
 		noticeData.put("respCode", respCode);
@@ -127,7 +127,7 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 			HttpSession session = request.getSession(true);
 			
 			SandYearService yService = (SandYearService)SpringUtil.getBean("sandYearService");
-			JSONObject json = yService.queryYearMember(phoneNumber, type, null);
+			JSONObject json = yService.queryYearMember(phoneNumber, type);
 
 			String respCode = json.getString(CommonConstant.RESP_CODE);
 			noticeData.put("respCode", respCode);

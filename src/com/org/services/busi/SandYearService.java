@@ -24,7 +24,7 @@ import com.org.utils.StringUtil;
 @Service
 public class SandYearService {
 	
-	public JSONObject queryYearMember( String phoneNumber, String type,String name){
+	public JSONObject queryYearMember( String phoneNumber, String type){
 		JSONObject response = null;
 		JSONArray allSym = new JSONArray();
 		try {
