@@ -67,7 +67,7 @@ $(document).ready(function(){
 	}else{
 		document.getElementById("isprize").style.display="none";
 		document.getElementById("isnoprize").style.display="";
-		var second=3000; //间隔时间3秒钟
+		var second=10000; //间隔时间3秒钟
 		sh=setInterval('myprize()',second);
 	}
 });
