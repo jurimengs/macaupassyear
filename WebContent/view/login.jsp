@@ -86,23 +86,22 @@
 	    <div id="blessDivRight">天<br />下<br />人<br />尽<br />在<br />杉<br />德<br />财<br />富<br />相<br />随</div> -->
     </div>
     <div class="login-head-logo">
-    	<p class="load_big_tit size-xl center">欢迎登录 <span style="color:#ff962d;"> 杉德年会</span></p>
+    	<p class="load_big_tit size-xl center">歡迎登入 <span style="color:#ff962d;"> 澳門通×MOME年會</span></p>
         
     </div>
     <form action="/macaupassyear/toIndex.do" method="post" id="loginform">
     <div class="load-input">
 		<!-- <input type="text" placeholder="姓名" id="userName" class="input loadinbg center">
         <div class="load-inp-line"></div> -->
-		<input type="tel" placeholder="手机号" id="phoneNumber" class="input loadinbg center" >
+		<input type="tel" placeholder="手機號碼" id="phoneNumber" class="input loadinbg center" >
 	</div>
 	</form>
 	
-	<div class="submit-btn" id="login" id="login" onclick="checklgn();">进入年会</div>
+	<div class="submit-btn" id="login" id="login" onclick="checklgn();">Welcome！</div>
 	<!-- <a id="spreadBtn" class="spreadBtn" onclick="spreadBless(this);">展开对联</a> -->
-    <div class="login-head-logo center">
-    	<img src="/data/images/ico-door.png" width="146" height="89">
+    <div class="center" style="padding:20px">
+    	<img src="/data/images/ico_login_logo_mp.png"><img src="/data/images/ico_login_logo_mome.png">
     </div>
-    <div class="genus_name" ><p class="genus center">杉德集团网络支付组</p></div>
     
 </body>
 <script type="text/javascript" src="/js/business.js?v=<%=b %>"></script>	
@@ -113,7 +112,7 @@ $('<img/>').load('/data/images/load-640-960.jpg',function(){
 });
 
 function showBless(){
-	$("#blessDivLeft").slideDown();
+	/* $("#blessDivLeft").slideDown();
 	setTimeout(function () {
 		$("#blessDivRight").slideDown();
 	}, 500);
@@ -127,10 +126,17 @@ function showBless(){
 		$('.default').fadeOut();
 		$('.mask').show();
 		$('.mask').fadeOut(1500);
-	}, 3500);
-	
+	}, 3500); */
+	displaylogin();
 }
-
+function displaylogin () {
+		$("#blessDivLeft").fadeOut();
+		$("#blessDivRight").fadeOut();
+		$("#blessDivMiddle").fadeOut();
+		$('.default').fadeOut();
+		$('.mask').show();
+		$('.mask').fadeOut(1500);
+	}
 function spreadBless(btn){
 	var blessDiv = $("#blessDivLeft");
 	if(blessDiv.css("display") == "block") {
