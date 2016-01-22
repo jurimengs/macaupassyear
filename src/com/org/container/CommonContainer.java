@@ -57,6 +57,7 @@ public class CommonContainer {
 
 	/**
 	 * 保存到内存的同时，也保存到数据库
+	 * 2016-01-22 保存到数据库的操作，可以设计成异步线程处理
 	 * @param key
 	 * @param data
 	 */
