@@ -64,21 +64,23 @@
 </head>
 <body class="login-bg">
     <div class="login-head-logo">
-    	<p class="load_big_tit size-xl center"> <span style="color:#ff962d;">杉德年会</span>抽奖宝</p>
+    	<p class="load_big_tit size-xl center"> <span style="color:#ff962d;">澳門通×MOME年會</span>抽獎寶</p>
         
     </div>
     <form action="/macaupassyear/tocj.do" method="post" id="loginform">
 	</form>
 	
     <div class="load-input">
-		<input type="text" placeholder="请输入抽奖口令" id="enterpwd" class="input loadinbg center">
+		<input type="text" placeholder="請輸入抽獎口令" id="enterpwd" class="input loadinbg center">
 	</div>
 	<div class="submit-btn" id="login" id="login" onclick="checklgn();">Enter</div>
 	<!-- <a id="spreadBtn" class="spreadBtn" onclick="spreadBless(this);">展开对联</a> -->
-    <div class="login-head-logo center">
-    	<img src="/data/images/ico-door.png" width="146" height="89">
+    <div class="center" style="padding:20px">
+    	<img src="/data/images/ico_login_logo_mp.png" height="89">
     </div>
-    <div class="genus_name" ><p class="genus center">杉德集团网络支付组</p></div>
+    <div class="center" style="padding:20px">
+    	<img src="/data/images/ico_login_logo_mome.png">
+    </div>
     
 </body>
 <script type="text/javascript" src="/js/business.js?v=<%=b %>"></script>	

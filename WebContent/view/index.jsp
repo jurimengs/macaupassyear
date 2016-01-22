@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="format-detection" content="telephone=no" />
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>杉德年会-首页</title>
+<title>澳門通×MOME年会-首页</title>
 <%@ include file="common.jsp"%>
     <link rel="stylesheet" href="/data/css/base.css?v=1" type="text/css">
 	<link rel="stylesheet" href="/data/css/public.css" type="text/css">
@@ -67,10 +67,11 @@
 		<div >
 			<a href="#"><img src="/data/images/Advert-01.png" ></a>
 		</div>
+		<!--
 		<div >
 			<a href="#"><img src="/data/images/Advert-02.png" ></a>
 		</div>
-        <!--
+        
 		<div >
 			<a href="#"><img src="/data/images/c.jpg" ></a>
 		</div>-->
