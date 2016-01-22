@@ -23,12 +23,6 @@ public class PushMessageRute {
 	 * @return
 	 */
 	public MessageHander rute(Map<String,String> paramsMap){
-		Object ruteRule = CommonContainer.getData(CommonConstant.RUTE_RULE);
-		if(ruteRule != null) {
-			// 应急入口
-			return ruteTemp(paramsMap);
-		}
-		
 		String level = paramsMap.get("level");
 		if(level.equals("5")) {
 			// 当前抽奖设置成五等奖

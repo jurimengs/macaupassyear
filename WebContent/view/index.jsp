@@ -57,7 +57,7 @@
 </div>
 <div class="sub-ico clear">
 	<ul>
-    	<li class="center ico-traffic active_view" onclick="window.location.href='/view/traffic.jsp';"><a href="/view/traffic.jsp">交通</a></li>
+    	<!-- <li class="center ico-traffic active_view" onclick="window.location.href='/view/traffic.jsp';"><a href="/view/traffic.jsp">交通</a></li> -->
         <li class="center ico-parking active_view" onclick="shakeaward();"><a>摇一摇</a></li>
         <li class="center ico-vote active_view" onclick=""><a href="/macaupassyear/toguaj.do">刮一刮</a></li>
     </ul>
