@@ -157,10 +157,17 @@ function change(){
 
 // 回收的时候，不能点击抽奖
 var recyling = false;
+var clicklock = false;
 function draw(){
+	if(clicklock) {
+		// 防止重复点击
+		return;
+	}
 	if(recyling) {
 		return;
 	}
+	// 锁
+	clicklock = true;
 	var leveValue = document.getElementById("selectLeve").value;
 	if(leveValue == "t") {
 		awardover = "ing";
@@ -263,6 +270,8 @@ function draw_success(data, status){
 		var msg = data.respMsg;
 		alert(msg);
 	}
+	// 响应业务处理完了，再解锁
+	clicklock = false;
 }
 
 </script>
