@@ -1,0 +1,44 @@
+create table SMP_YEAR_PROGRAM
+(
+  pname   VARCHAR2(50),
+  pnumber VARCHAR2(10),
+  pcount  NUMBER(10),
+  ptime   VARCHAR2(20),
+  pmember VARCHAR2(200),
+  isstart VARCHAR2(1)
+)
+
+create table SMP_YEAR_PRIZE
+(
+  pname    VARCHAR2(50),
+  pcontent VARCHAR2(500),
+  pnumber  VARCHAR2(10),
+  pstatus  VARCHAR2(2)
+)
+
+create table SMP_YEAR_MEMBER
+(
+  memname     VARCHAR2(30),
+  moible      VARCHAR2(30),
+  company     VARCHAR2(30),
+  tablenum    VARCHAR2(20),
+  seatnum     VARCHAR2(10),
+  rewardstate VARCHAR2(4),
+  pname       VARCHAR2(50),
+  ctime       VARCHAR2(20),
+  isreward    VARCHAR2(2),
+  isprize     VARCHAR2(1),
+  ischeck     VARCHAR2(1)
+)
+
+create table SMP_YEAR_MANAGER
+(
+  moible   VARCHAR2(11),
+  roleflag VARCHAR2(10)
+)
+
+create table SMP_YEAR_CURRENT_AWARD
+(
+  current_award VARCHAR2(50) not null,
+  is_start      VARCHAR2(1)
+)

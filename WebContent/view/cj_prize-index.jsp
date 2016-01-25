@@ -191,7 +191,7 @@ function draw(){
 	if(recyling) {
 		return;
 	}
-	// 锁
+	// 点击锁
 	clicklock = true;
 	var leveValue = document.getElementById("selectLeve").value;
 	if(leveValue == "t") {
