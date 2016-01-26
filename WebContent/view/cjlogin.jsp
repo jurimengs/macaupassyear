@@ -75,11 +75,8 @@
 	</div>
 	<div class="submit-btn" id="login" id="login" onclick="checklgn();">Enter</div>
 	<!-- <a id="spreadBtn" class="spreadBtn" onclick="spreadBless(this);">展开对联</a> -->
-    <div class="center" style="padding:20px">
-    	<img src="/data/images/ico_login_logo_mp.png" height="89">
-    </div>
-    <div class="center" style="padding:20px">
-    	<img src="/data/images/ico_login_logo_mome.png">
+    <div class="center" style="padding:50px">
+    	<img src="/data/images/logo_mp_mome.png">
     </div>
     
 </body>

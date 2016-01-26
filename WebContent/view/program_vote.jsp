@@ -5,7 +5,7 @@
 <%@ include file="common.jsp"%>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>杉德年会-节目投票</title>
+	<title>澳門通×MOME年會-節目投票</title>
 	<link rel="stylesheet" href="/data/css/base.css" type="text/css">
 	<link rel="stylesheet" href="/data/css/public.css" type="text/css">
 	<link rel="stylesheet" href="/data/css/index.css" type="text/css">
@@ -18,9 +18,9 @@
 <div class="clear pos_relative">
 	<div class="global-tit-trans"></div>
     <div class="global-titleb">
-    	<c:if test="${empty usermeg.pname }">请投出您宝贵的一票</c:if>
-    	<c:if test="${!empty usermeg.pname }">投票结果</c:if>
-    	<a class="global-titleb" href="/macaupassyear/queryProgram.do">(点击刷新)</a>
+    	<c:if test="${empty usermeg.pname }">請投出您寶貴的一票</c:if>
+    	<c:if test="${!empty usermeg.pname }">投票結果</c:if>
+    	<a class="global-titleb" href="/macaupassyear/queryProgram.do">(點擊刷新)</a>
     </div>
 </div>
 <div class="global-navb vote-inp">
@@ -88,14 +88,14 @@ function check(){
 	if( !! $("#voteHidden").val()) {
 		return true;
 	}
-	alert("请先选择节目");
+	alert("請先選擇節目");
 	return false;
 }
 
 function choose(obj, isstart){
 	if(isstart != "y") {
 		//节目未开始不可投票
-		alert("该节目还未开始或未完成，暂不可投票哦");
+		alert("該節目還未開始或未完成，暫不可投票哦");
 		return;
 	}
 	//alert(obj.tagName);

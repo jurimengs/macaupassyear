@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>中奖查询</title>
+<title>中獎查詢</title>
 <%@ include file="common.jsp"%>
 <link rel="stylesheet" href="/data/css/base.css" type="text/css">
 <link rel="stylesheet" href="/data/css/public.css" type="text/css">
@@ -13,15 +13,15 @@
 <body>
 <form action="/macaupassyear/queryAwardUser.do">
 	<input name="moible" id="moible" style="border: 1px solid #ccc;"/>
-	<input type="submit" value="查询" />
+	<input type="submit" value="查詢" />
 </form>
 <div>
 	<c:if test="${!empty aim}">
 		<table>
 		<tr>
 			<td>姓名</td>
-			<td>手机</td>
-			<td>是否中奖</td>
+			<td>手機</td>
+			<td>是否中獎</td>
 			<td>操作</td>
 		</tr>
 		<tr>
@@ -32,12 +32,12 @@
 					${aim.rewardstate }
 				</c:if>
 				<c:if test="${empty aim.rewardstate}">
-					未中奖
+					未中獎
 				</c:if>
 			</td>
 			<td>
 				<c:if test="${!empty aim.rewardstate && aim.isprize != '0'}">
-					<a href="http://payment-test.sandpay.com.cn/macaupassyear/acceptAward.do?phoneNumber=${moible }">发奖</a>
+					<a href="http://payment-test.sandpay.com.cn/macaupassyear/acceptAward.do?phoneNumber=${moible }">發獎</a>
 				</c:if>
 			</td>
 		</tr>

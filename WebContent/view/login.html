@@ -12,7 +12,7 @@
 <body class="login-bg">
     <div class="default"></div>
     <div class="login-head-logo">
-    	<p class="load_big_tit size-xl center">欢迎登录 <span style="color:#ff962d;"> 杉德年会</span></p>
+    	<p class="load_big_tit size-xl center">歡迎登入<span style="color:#ff962d;"> 澳門通×MOME年會-首頁</span></p>
         
     </div>
 	<div class="load-input">
@@ -20,11 +20,10 @@
         <div class="load-inp-line"></div>
 		<input type="tel" placeholder="" value="手机号" id="mobile" class="input loadinbg center" onfocus="this.value='';" onclick="this.value='';">
 	</div>
-	<div class="submit-btn" id="login">进入年会</div>
+	<div class="submit-btn" id="login">進入年會</div>
     <div class="login-head-logo center">
     	<img src="../data/images/ico-door.png" width="146" height="89">
     </div>
-    <div class="genus_name" ><p class="genus center">杉德集团网络支付组</p></div>
 <script src="../data/js/zepto.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="../data/js/base.js"></script>
 <script type="text/javascript" src="../data/js/service.js"></script>	
@@ -41,11 +40,7 @@ $('#login').bind("click",function(){
 	var mobile = $('#mobile').val();
 	var username = $('#username').val();
 	if(!reg.test(mobile)) {
-		toastr['info']("请输入正确的手机号码！");
-		return false;
-	}
-	if(username=='') {
-		toastr['info']("请输入姓名！");
+		toastr['info']("請輸入正確的手機號碼！");
 		return false;
 	}
 	var parpams = "\"phoneNumber\":\""+mobile+"\","+

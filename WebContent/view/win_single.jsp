@@ -8,7 +8,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1, user-scalable=0" />
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>杉德年会-中奖信息</title>
+	<title>澳門通×MOME年會-中獎信息</title>
 	<%@ include file="common.jsp"%>
 	<link rel="stylesheet" href="/data/css/base.css" type="text/css">
 	<link rel="stylesheet" href="/data/css/public.css" type="text/css">
@@ -16,7 +16,7 @@
 </head>
 <body class="body-bg">
 <!--页头-->
-<script language="javascript" src="/data/js/header.js?v=<%=b %>" id="headerScript" data-args="headername=获奖单&headerbackurl=index.html"></script>
+<script language="javascript" src="/data/js/header.js?v=<%=b %>" id="headerScript" data-args="headername=獲獎單&headerbackurl=index.html"></script>
 <!--页头 结束-->
 <!--5-->
 <!--获奖人员名单-->

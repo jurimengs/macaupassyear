@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="format-detection" content="telephone=no" />
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>澳門通×MOME年会-首页</title>
+<title>澳門通×MOME年會-首頁</title>
 <%@ include file="common.jsp"%>
     <link rel="stylesheet" href="/data/css/base.css?v=1" type="text/css">
 	<link rel="stylesheet" href="/data/css/public.css" type="text/css">
@@ -44,21 +44,22 @@
 	</style>
 </head>
 <body class="body-bg">
-<!--top-->
+<!--top
 <div class="ico-more clear active_view">
  <img src="/data/images/ico-more.png"  width="36" height="36" onclick="gotoUrl('/macaupassyear/toHelp.do')">
 </div>
+-->
 <!--top over-->
 <div class="main-ico clear">
 	<ul>
     	<li class="center ico-seat active_view" onclick="window.location.href='/macaupassyear/querySameTableMemberList.do?phoneNumber=${usermeg.moible}';"><a href="javascript:void(0);" >我的席位</a></li>
-        <li class="center ico-prize active_view" onclick="window.location.href='/macaupassyear/queryMyPrize.do?phoneNumber=${usermeg.moible}';"><a href="javascript:void(0);">我的奖品</a></li>
+        <li class="center ico-prize active_view" onclick="window.location.href='/macaupassyear/queryMyPrize.do?phoneNumber=${usermeg.moible}';"><a href="javascript:void(0);">我的獎品</a></li>
     </ul>
 </div>
 <div class="sub-ico clear">
 	<ul>
     	<!-- <li class="center ico-traffic active_view" onclick="window.location.href='/view/traffic.jsp';"><a href="/view/traffic.jsp">交通</a></li> -->
-        <li class="center ico-parking active_view" onclick="shakeaward();"><a>摇一摇</a></li>
+        <li class="center ico-parking active_view" onclick="shakeaward();"><a>搖一搖</a></li>
         <li class="center ico-vote active_view" onclick=""><a href="/macaupassyear/toguaj.do">刮一刮</a></li>
     </ul>
 </div>
@@ -79,8 +80,8 @@
 </div>
 <div class=" pos_relative clear">
 	<div class="global-tit-trans"></div>
-    <div class="global-titleb">谁中了大奖</div>
-	<div class="global-btn" onclick="getAwardList();">获奖单</div>
+    <div class="global-titleb">誰中了大獎</div>
+	<div class="global-btn" onclick="getAwardList();">獲獎單</div>
 </div>
 <ul class="msg-list-wrap" id="msgid">
 <c:if test="${fn:length(rewardarrary)>0 }">
@@ -108,7 +109,7 @@
 </c:forEach>
 </c:if>
 <c:if test="${fn:length(rewardarrary)<=0 }">
-<li class="center" style="background:none;">大奖等你吃饱了才出来哦~</li>
+<li class="center" style="background:none;">大獎等你吃飽了才出來哦~</li>
 </c:if>
 	
 </ul>
@@ -159,7 +160,7 @@ function shakeaward(){
 function shakesuccess(data){
 	var msg = "";
 	if(data.respCode == "10000") {
-		msg = "您已进入抽奖队列, 当抽奖完成后点击\"我的奖品\"查看中奖信息";
+		msg = "您已進入抽獎隊列, 當抽獎完成後點擊\"我的獎品\"查看中獎信息";
 	} else {
 		msg = data.respMsg;
 	}
@@ -237,7 +238,7 @@ function seat_success(data,status){
 	}
 }
 function seat_error(){
-	alert("进入年会失败！");
+	alert("進入年會失敗！");
 }
 function gotoUrl(url){
 	window.location.href=url;
@@ -259,7 +260,7 @@ function getAwardList(){
 
 function award_success(data){
 	if(data.msg == "" || data.msg == "true"){
-		alert("还未开始抽奖！");
+		alert("還未開始抽獎！");
 	}else if(data.msg == "false"){
 		cookie.set("flag5","true");
 		cookie.set("flag4","true");
@@ -272,7 +273,7 @@ function award_success(data){
 }
 
 function award_error(){
-	alert("进入获奖单失败！");
+	alert("進入獲獎單失敗！");
 }
 </script>
 </body>

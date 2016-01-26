@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>补抽奖</title>
+<title>補抽獎</title>
 <%@ include file="common.jsp"%>
 <script type="text/javascript" src="/js/jquery-1.11.1.min.js?v=<%=b %>"></script>
 <link href="../data/css/cj_globel.css" rel="stylesheet" type="text/css">
@@ -47,7 +47,7 @@
 	                <div id="tdiv" class="winpri-box-bg center" style="display: none; opacity: 0;">
 	                    <span >
 	                    	<font id="terfont" class="w-level" style="background-size: 400px auto;">
-	                    		补抽特等奖
+	                    		補抽特等奖
 	                    	</font>
 	                    </span>
 	                    <input type="hidden" name="selectLeve" id="selectLeve" value="${currentAwards }"/>
