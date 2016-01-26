@@ -54,11 +54,11 @@ public class CommonConstant {
 	public final static String AWARD_LUCKY = "AwardLucky";
 	
 	//奖品名称
-	public final static String FIRST_AWARD_NAME = "金条 20g";
-	public final static String SECOND_AWARD_NAME = "东丽比诺 净水器";
-	public final static String THREE_AWARD_NAME = "科沃斯 扫地机器人";
-	public final static String FOURTH_AWARD_NAME = "移动硬盘 1T";
-	public final static String FIFTH_AWARD_NAME = "200元 杉德卡";
+	public final static String FIRST_AWARD_NAME = "澳門通加值券/現金3000元";
+	public final static String SECOND_AWARD_NAME = "澳門通加值券/現金1500元";
+	public final static String THREE_AWARD_NAME = "澳門通卡1000元";
+	public final static String FOURTH_AWARD_NAME = "澳門通卡500元";
+	public final static String FIFTH_AWARD_NAME = "澳門通卡300元";
 	public final static String LUCKY_AWARD_NAME = "6000元 杉德卡";
 	
 	//奖品个数

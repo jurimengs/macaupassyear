@@ -90,13 +90,13 @@
  	 <div class="fl_left" style="width:20%; font:normal 1.15em 'Microsoft Yahei';">${entity.memname}</div>
  	 <div class="fl_right prize-get">
 		 <c:if test="${entity.rewardstate eq '1'}">
-		 一等奖
+		 一等獎
 		 </c:if>
 		 <c:if test="${entity.rewardstate eq '2'}">
-		 二等奖
+		 二等獎
 		 </c:if>
 		  <c:if test="${entity.rewardstate eq 't'}">
-		 特等奖
+		 特等獎
 		 </c:if>
 	 </div>
 	 <div class="clear"></div>
