@@ -71,6 +71,7 @@
 	                <!-- wudengjiang sidengjiang sandengjiang -->
 	                <div id="odiv" class="winpri-simp-box-bg center" style="display:block;">
                     	<font id="opersitTerfont" class="w-level">
+                    		<c:if test="${currentAwards eq '6' }">供应商赞助</c:if>
                     		<c:if test="${currentAwards eq '5' }">五等奖</c:if>
                     		<c:if test="${currentAwards eq '4' }">四等奖</c:if>
                     		<c:if test="${currentAwards eq '3' }">三等奖</c:if>
@@ -111,7 +112,7 @@
 	       <!--add over-->
 		<button class="close" onclick="document.getElementById('maskid').style.display='none'; "><h1 style="display:block; margin-top:0px;"><img src="/data/images/close.png" width="32" height="32"></h1>
 		</button>
-		<div class="top-mid-bg" id="drawNumber"><font class="top-mid-txt">恭喜以下五等奖获得者</font></div>
+		<div class="top-mid-bg" id="drawNumber"><font class="top-mid-txt">恭喜供应商赞助礼品获得者</font></div>
 		<div class="modal-body" id="drawList"></div>
 	</div>
 </div>
@@ -220,6 +221,12 @@ function draw_success(data, status){
 	if(data.respCode=='10000'){
 		var currentLevel = $("#selectLeve").val();
 		$("#currentLevel").val(currentLevel);
+		if(currentLevel=='6'){
+			$("#selectLeve").val("5");
+			$("#opersitTerfont").text("五等奖");
+			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜供应商赞助礼品获得者</font>";
+			document.getElementById("drawNumber").innerHTML=drawNumHtml;
+		}
 		if(currentLevel=='5'){
 			$("#selectLeve").val("4");
 			$("#opersitTerfont").text("四等奖");
@@ -254,12 +261,12 @@ function draw_success(data, status){
 
 			// 一等奖特效
 			gustop();
-			createLocation(locations_first, drawList, 4000);
+			createLocation(locations_first, drawList, 100);
 			return;
 		}else if(currentLevel=='2'){
 			// 二等奖特效
 			gustop();
-			createLocation(locations_sec, drawList, 2500);
+			createLocation(locations_sec, drawList, 100);
 			return;
 		}else if(currentLevel=='t'){
 			// 特等奖的中奖者信息
@@ -270,8 +277,32 @@ function draw_success(data, status){
 			locked = false;
 			return;
 		}else{
-			// 3. 4 .5等奖
-			var i=0;
+			// 3. 4 .5 g等奖
+			var arrtemp = [];
+			var arr = [];
+			var linecount = 4;
+
+			for (var i=0; i< drawList.length ;i++ ) {
+				var indextemp = i % linecount;
+				if(indextemp == 0) {
+					arrtemp = [];
+					arr[arr.length] = arrtemp;
+				}
+				arrtemp[indextemp] = drawList[i];
+			 
+			}
+			
+			for(var n=0; n<arr.length; n++){
+				var linearr = arr[n];
+				prizehtml+="<ul><li>";
+				for(var j=0; j<linearr.length; j++){
+					var temp = linearr[j];
+					prizehtml+="<div class=\"person_box fl_left\"><strong>"+temp.memname+"<span class=\"com_name\">"+temp.company+"</span></strong><dt>"+temp.moible+"</dt></div>";
+				}
+				prizehtml+="</li></ul>";
+			}
+
+			/* var i=0;
 			for1 = drawList.length/5;
 			for(var n=0;n<for1;n++){
 				prizehtml+="<ul><li>";
@@ -283,11 +314,11 @@ function draw_success(data, status){
 					prizehtml+="<div class=\"person_box fl_left\"><strong>"+drawList[i].memname+"<span class=\"com_name\">"+drawList[i].company+"</span></strong><dt>"+drawList[i].moible+"</dt></div>";
 					i=i+1;
 				}
-				prizehtml+="</ul></li>";
+				prizehtml+="</li></ul>";
 				if(i%25==0){
 					prizehtml+="<div class=\"dot_line fl_left \" ></div>";
 				}
-			}
+			} */
 			document.getElementById("drawList").innerHTML=prizehtml;
 			document.getElementById("maskid").style.display="block";
 			gustop();

@@ -49,7 +49,7 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		
 		String currentAwards = "";
 		if(jsonObject == null) {
-			currentAwards = "5";
+			currentAwards = "6";
 		} else {
 			String currentAwardsTemp = jsonObject.getString("currentAward");
 				
@@ -76,6 +76,10 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 				// 当前抽奖设置成特等奖
 				CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_SUPER);
 				CommonContainer.saveData(CommonConstant.FLAG_SUPER_START, "1");	// 设置为开始
+			} else if(currentAwardsTemp.equals("6")) {
+				// 当前抽奖设置成供应商提供奖
+				CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_SUPPLIER);
+				CommonContainer.saveData(CommonConstant.FLAG_SUPPLIER_START, "1");	// 设置为开始
 			}
 			
 			String isStart = jsonObject.getString("isStart");
