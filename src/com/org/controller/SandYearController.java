@@ -52,6 +52,7 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 			currentAwards = "6";
 		} else {
 			String currentAwardsTemp = jsonObject.getString("currentAward");
+			String isStart = jsonObject.getString("isStart");
 				
 			if(currentAwardsTemp.equals("5")) {
 				// 当前抽奖设置成五等奖
@@ -62,8 +63,14 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 				CommonContainer.saveData(CommonConstant.FLAG_FOURTH_START, "1");	// 设置为开始
 			} else if(currentAwardsTemp.equals("3")) {
 				// 当前抽奖设置成三等奖
-				CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_THIRD);	
-				CommonContainer.saveData(CommonConstant.FLAG_THIRD_START, "1");	// 设置为开始
+				if(isStart.equals("1")) {
+					CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_FOURTH);
+					CommonContainer.saveData(CommonConstant.FLAG_THIRD_START, null);	// 停掉三等flag
+					CommonContainer.saveData(CommonConstant.FLAG_FOURTH_START, "1");	// 设置为开始
+				}else {
+					CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_THIRD);	
+					CommonContainer.saveData(CommonConstant.FLAG_THIRD_START, "1");	// 设置为开始
+				}
 			} else if(currentAwardsTemp.equals("2")) {
 				// 当前抽奖设置成二等奖
 				CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_SECOND);	
@@ -74,15 +81,24 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 				CommonContainer.saveData(CommonConstant.FLAG_FIRST_START, "1");	// 设置为开始
 			} else if(currentAwardsTemp.equals("t")) {
 				// 当前抽奖设置成特等奖
-				CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_SUPER);
-				CommonContainer.saveData(CommonConstant.FLAG_SUPER_START, "1");	// 设置为开始
+				// 当前抽奖设置成三等奖
+				if(isStart.equals("1")) {
+					CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_FIRST);
+					CommonContainer.saveData(CommonConstant.FLAG_SUPER_START, null);	// 
+					CommonContainer.saveData(CommonConstant.FLAG_FIRST_START, "1");	// 设置为开始
+					CommonContainer.saveData(CommonConstant.FLAG_FOURTH_START, "1");	// 设置为开始
+					CommonContainer.saveData(CommonConstant.FLAG_THIRD_START, "1");	// 设置为开始
+				}else {
+					CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_SUPER);
+					CommonContainer.saveData(CommonConstant.FLAG_SUPER_START, "1");	// 设置为开始
+				}
+				
 			} else if(currentAwardsTemp.equals("6")) {
 				// 当前抽奖设置成供应商提供奖
 				CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_SUPPLIER);
 				CommonContainer.saveData(CommonConstant.FLAG_SUPPLIER_START, "1");	// 设置为开始
 			}
 			
-			String isStart = jsonObject.getString("isStart");
 			if(isStart.equals("0") && !currentAwardsTemp.equals("t")) {
 				// 已抽
 				currentAwards = String.valueOf(Integer.valueOf(currentAwardsTemp) -1);
@@ -401,6 +417,9 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 			noticeData.put("respMsg", "成功");
 			noticeData.put("memArray", currentAwardUserList);
 		} else {
+			yService.saveCurrentAward(level, "1");
+			noticeData.put("respCode", "");
+			noticeData.put("respMsg", "奖池中没有用户中奖，请用户参与");
 			
 		}
 		
