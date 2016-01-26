@@ -1,44 +1,44 @@
 create table SMP_YEAR_PROGRAM
 (
-  pname   VARCHAR2(50),
-  pnumber VARCHAR2(10),
-  pcount  NUMBER(10),
-  ptime   VARCHAR2(20),
-  pmember VARCHAR2(200),
-  isstart VARCHAR2(1)
+  pname   VARCHAR(50),
+  pnumber VARCHAR(10),
+  pcount  BIGINT(10),
+  ptime   VARCHAR(20),
+  pmember VARCHAR(200),
+  isstart VARCHAR(1)
 )
 
 create table SMP_YEAR_PRIZE
 (
-  pname    VARCHAR2(50),
-  pcontent VARCHAR2(500),
-  pnumber  VARCHAR2(10),
-  pstatus  VARCHAR2(2)
+  pname    VARCHAR(50),
+  pcontent VARCHAR(500),
+  pnumber  VARCHAR(10),
+  pstatus  VARCHAR(2)
 )
 
 create table SMP_YEAR_MEMBER
 (
-  memname     VARCHAR2(30),
-  moible      VARCHAR2(30),
-  company     VARCHAR2(30),
-  tablenum    VARCHAR2(20),
-  seatnum     VARCHAR2(10),
-  rewardstate VARCHAR2(4),
-  pname       VARCHAR2(50),
-  ctime       VARCHAR2(20),
-  isreward    VARCHAR2(2),
-  isprize     VARCHAR2(1),
-  ischeck     VARCHAR2(1)
+  memname     VARCHAR(30),
+  moible      VARCHAR(30),
+  company     VARCHAR(30),
+  tablenum    VARCHAR(20),
+  seatnum     VARCHAR(10),
+  rewardstate VARCHAR(4),
+  pname       VARCHAR(50),
+  ctime       VARCHAR(20),
+  isreward    VARCHAR(2),
+  isprize     VARCHAR(1),
+  ischeck     VARCHAR(1)
 )
 
 create table SMP_YEAR_MANAGER
 (
-  moible   VARCHAR2(11),
-  roleflag VARCHAR2(10)
+  moible   VARCHAR(11),
+  roleflag VARCHAR(10)
 )
 
 create table SMP_YEAR_CURRENT_AWARD
 (
-  current_award VARCHAR2(50) not null,
-  is_start      VARCHAR2(1)
+  current_award VARCHAR(50) not null,
+  is_start      VARCHAR(1)
 )

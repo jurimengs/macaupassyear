@@ -57,7 +57,8 @@ public class MessageController extends SmpHttpServlet implements CommonControlle
 				String d = temp.getString(CommonConstant.AWARD_FOURTH);
 				String e = temp.getString(CommonConstant.AWARD_FIFTH);
 				String f = temp.getString(CommonConstant.AWARD_LUCKY);
-				if(a=="" && b=="" && c=="" && d=="" && e=="" && f==""){
+				String g = temp.getString(CommonConstant.AWARD_SUPPLIER);
+				if(a=="" && b=="" && c=="" && d=="" && e=="" && f=="" && g==""){
 					msg = "true";
 				}else{
 					msg = "false";
@@ -98,6 +99,8 @@ public class MessageController extends SmpHttpServlet implements CommonControlle
 		Object e = CommonContainer.getData(CommonConstant.FIFTH_USERLIST);
 		// 幸运奖中奖名单
 		Object f = CommonContainer.getData(CommonConstant.LUCKY_USERLIST);
+		// 供应商奖项中奖名单
+		Object g = CommonContainer.getData(CommonConstant.SUPPLIER_USERLIST);
 		if(t != null) {
 			temp.put(CommonConstant.AWARD_SUPER, t);
 		}else{
@@ -132,6 +135,11 @@ public class MessageController extends SmpHttpServlet implements CommonControlle
 			temp.put(CommonConstant.AWARD_LUCKY, f);
 		}else{
 			temp.put(CommonConstant.AWARD_LUCKY, "");
+		}
+		if(g != null) {
+			temp.put(CommonConstant.AWARD_SUPPLIER, f);
+		}else{
+			temp.put(CommonConstant.AWARD_SUPPLIER, "");
 		}
 		return temp;
 	}
