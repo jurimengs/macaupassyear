@@ -113,6 +113,22 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		return;
 	}
 	
+	public void managechecklgn(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String enterpwd = request.getParameter("enterpwd");
+		String _enterpwd = PropertiesUtil.getValue("award", "managepwd");
+		
+		JSONObject noticeData = new JSONObject();
+		if(enterpwd.equals(_enterpwd)) {
+			noticeData.put("respCode", "10000");
+			request.getSession().setAttribute("manage", "logined");
+		} else {
+			noticeData.put("respCode", "");
+			noticeData.put("respMsg", "口令错误");
+		}
+		this.write(noticeData, "utf-8", response);				
+		return;
+	}
+	
 	public void queryYearMember(HttpServletRequest request,HttpServletResponse response)
 			throws Exception{
 		String phoneNumber = request.getParameter("phoneNumber");
@@ -556,6 +572,19 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		}
 
 		this.write(result, CommonConstant.UTF8, response);
+		return;
+	}
+
+	public void tomanager(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		HttpSession session = request.getSession();
+		// 抽奖管理员
+		if(session.getAttribute("manage") == null) {
+			// 如果未登录
+			this.forward("/view/managelogin.jsp", request, response);
+			return;
+		}
+		
+		this.forward("/view/datamanage.jsp", request, response);	
 		return;
 	}
 	

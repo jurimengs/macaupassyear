@@ -5,6 +5,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>年会管理</title>
 <%@ include file="common.jsp"%>
+<c:if test="${empty manage }">
+<c:redirect url="managelogin.jsp" />
+</c:if>
 </head>
 <body>
 <table>
