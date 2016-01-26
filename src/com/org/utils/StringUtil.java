@@ -892,9 +892,11 @@ public class StringUtil {
 //		
 //		StringUtil.translateMap(s);
 		
-		for (int i = 0; i < 5; i++) {
-    		System.out.println((int)(5*Math.random()));
-		}
+//		for (int i = 0; i < 5; i++) {
+//    		System.out.println((int)(5*Math.random()));
+//		}
+		
+		randomCommon(0, 2, 2);
 	}
 
 	public static String toEntityName(String fieldName, boolean toUpper) {
@@ -938,7 +940,7 @@ public class StringUtil {
             int num = (int) (Math.random() * (max - min)) + min;  
             boolean flag = true;  
             for (int j = 0; j < n; j++) {  
-                if(num == result[j]){  
+                if(num == result[j] && num != 0){  
                     flag = false;  
                     break;  
                 }  

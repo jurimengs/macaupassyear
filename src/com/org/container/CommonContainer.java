@@ -1,15 +1,15 @@
 package com.org.container;
 
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 
 import javax.servlet.ServletContext;
 
 import net.sf.json.JSONArray;
 
-import com.org.dao.CommonDao;
-import com.org.util.SpringUtil;
+import com.org.asynchronous.SaveThread;
 
 public class CommonContainer {
 	public static Map<Object, Object> map = new HashMap<Object, Object>();
@@ -67,27 +67,14 @@ public class CommonContainer {
 		if(data==null || data.size() <= 0) {
 			return;
 		}
-		// 2保存到数据库
-		Map<Integer, Object> params = new HashMap<Integer, Object>();
-		String upUserAwardSql = "update smp_year_member set rewardstate='"+level+"' where moible in(";
-		String str = "";
-		int paramIndex = 0;
-		for (int i = 0; i < data.size(); i++) {
-			paramIndex = i +1;
-			str += "?,";
-			params.put(paramIndex, data.getJSONObject(i).getString("moible"));
-			// 保存内存中用户的中奖状态
-			data.getJSONObject(i).put("rewardstate", level);
-		}
-		str = str.substring(0, str.length()-1);
-		upUserAwardSql += str;
-		upUserAwardSql += ")";
-
-		CommonDao commonDao = (CommonDao)SpringUtil.getBean("commonDao");	
+		
+		Callable<String> event = new SaveThread(level, data);
 		try {
-			commonDao.update(upUserAwardSql, params);
-		} catch (SQLException e) {
-			e.printStackTrace();
+			RuteThreadPool.submit(event);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		} catch (ExecutionException e1) {
+			e1.printStackTrace();
 		}
 	}
 
