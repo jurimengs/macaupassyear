@@ -52,6 +52,32 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 			currentAwards = "5";
 		} else {
 			String currentAwardsTemp = jsonObject.getString("currentAward");
+				
+			if(currentAwardsTemp.equals("5")) {
+				// 当前抽奖设置成五等奖
+				CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_FIFTH);
+				CommonContainer.saveData(CommonConstant.FLAG_FIFTH_START, "1");	// 设置为开始
+			} else if(currentAwardsTemp.equals("4")) {
+				CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_FOURTH);
+				CommonContainer.saveData(CommonConstant.FLAG_FOURTH_START, "1");	// 设置为开始
+			} else if(currentAwardsTemp.equals("3")) {
+				// 当前抽奖设置成三等奖
+				CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_THIRD);	
+				CommonContainer.saveData(CommonConstant.FLAG_THIRD_START, "1");	// 设置为开始
+			} else if(currentAwardsTemp.equals("2")) {
+				// 当前抽奖设置成二等奖
+				CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_SECOND);	
+				CommonContainer.saveData(CommonConstant.FLAG_SECOND_START, "1");	// 设置为开始
+			} else if(currentAwardsTemp.equals("1")) {
+				// 当前抽奖设置成一等奖
+				CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_FIRST);
+				CommonContainer.saveData(CommonConstant.FLAG_FIRST_START, "1");	// 设置为开始
+			} else if(currentAwardsTemp.equals("t")) {
+				// 当前抽奖设置成特等奖
+				CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_SUPER);
+				CommonContainer.saveData(CommonConstant.FLAG_SUPER_START, "1");	// 设置为开始
+			}
+			
 			String isStart = jsonObject.getString("isStart");
 			if(isStart.equals("0") && !currentAwardsTemp.equals("t")) {
 				// 已抽
@@ -462,7 +488,7 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 	}
 	
 	public void shakeaward(HttpServletRequest request,HttpServletResponse response)throws Exception{
-
+		
 		HttpSession session = request.getSession();
 		JSONObject usermeg = (JSONObject)session.getAttribute("usermeg");
 		if(usermeg == null) {
@@ -471,48 +497,60 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		}
 		
 		JSONObject result = new JSONObject();
-		
-		// 先判断有没有中奖
-		if(StringUtils.isNotEmpty(usermeg.getString("rewardstate"))) {
-			result.put("respCode", "");
-			result.put("respMsg", "您已中奖, 不能再参与此次抽奖");
-			this.write(result, CommonConstant.UTF8, response);
-			return;
-		}
-		
-		String moible = usermeg.getString("moible");
-		// 如果是三等奖 特等奖
-		UserManager.addUserToTemporary(moible);
-		result.put("respCode", "10000");
-		result.put("respMsg", "您已进入抽奖队列,请等候抽奖结果");
+		result.put("respCode", "");
+		result.put("respMsg", "还未开始");
+
+		if(CommonContainer.getData(CommonConstant.FLAG_FOURTH_START) != null) {
+			if(CommonContainer.getData(CommonConstant.FLAG_THIRD_START) == null) {
+				// 三等奖
+				result = enter(usermeg);
+			} else {
+				if(CommonContainer.getData(CommonConstant.FLAG_FIRST_START) != null) {
+					// 特
+					result = enter(usermeg);
+				}
+			}
+		} 
 		this.write(result, CommonConstant.UTF8, response);
 		return;
 	}
 	
-	public void toguaj(HttpServletRequest request,HttpServletResponse response)throws Exception{
+	private JSONObject enter(JSONObject usermeg){
 
+		JSONObject result = new JSONObject();
+		String moible = usermeg.getString("moible");
+		JSONObject userTemp = UserManager.getUser(moible);
+		// 先判断有没有中奖
+		if(StringUtils.isNotEmpty(userTemp.getString("rewardstate"))) {
+			result.put("respCode", "");
+			result.put("respMsg", "您已中奖, 不能再参与此次抽奖");
+			return result;
+		}
+		
+		// 进入抽奖队列,等三等奖 特等奖抽奖
+		UserManager.addUserToTemporary(moible);
+		result.put("respCode", "10000");
+		result.put("respMsg", "您已进入抽奖队列,请等候抽奖结果");
+		return result;
+	}
+	
+	public void toguaj(HttpServletRequest request,HttpServletResponse response)throws Exception{
 		HttpSession session = request.getSession();
 		JSONObject usermeg = (JSONObject)session.getAttribute("usermeg");
 		if(usermeg == null) {
 			this.forward("/view/login.jsp", request, response);
 			return;
 		}
-		
+
 		JSONObject result = new JSONObject();
-		
-		// 先判断有没有中奖
-		if(StringUtils.isNotEmpty(usermeg.getString("rewardstate"))) {
+		if(StringUtils.isNotEmpty(usermeg.getString("rewardstate")) && !usermeg.getString("rewardstate").equals("1")) {
 			result.put("respCode", "");
-			result.put("respMsg", "您已中奖, 不能再参与此次抽奖");
-			this.write(result, CommonConstant.UTF8, response);
-			return;
+			result.put("respMsg", "您已中其他奖，不能再参加此次抽奖了");
+		} else {
+			result.put("respCode", "10000");
+			result.put("respMsg", "");
 		}
-		
-		String moible = usermeg.getString("moible");
-		// 如果是三等奖 特等奖
-		UserManager.addUserToTemporary(moible);
-		result.put("respCode", "10000");
-		result.put("respMsg", "您已进入抽奖队列,请等候抽奖结果");
+
 		this.write(result, CommonConstant.UTF8, response);
 		return;
 	}

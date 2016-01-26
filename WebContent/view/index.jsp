@@ -59,7 +59,7 @@
 	<ul>
     	<!-- <li class="center ico-traffic active_view" onclick="window.location.href='/view/traffic.jsp';"><a href="/view/traffic.jsp">交通</a></li> -->
         <li class="center ico-parking active_view" onclick="shakeaward();"><a>摇一摇</a></li>
-        <li class="center ico-vote active_view" onclick=""><a href="/macaupassyear/toguaj.do">刮一刮</a></li>
+        <li class="center ico-vote active_view" onclick="gua()"><a>刮一刮</a></li>
     </ul>
 </div>
 <div class="index-slider clear">
@@ -155,6 +155,27 @@ function shakeaward(){
 	});
 }
 
+function gua(){
+	$.ajax({
+		type:"post",
+		url:"/macaupassyear/toguaj.do",
+		data:{},
+		dataType:"json",
+		cache:"false",
+		success : function(data){
+			if(data.respCode == "10000") {
+				window.location.href="/view/guaj.jsp";
+			} else {
+				alert(data.respMsg);
+			}
+		},
+		error : function(){
+			alert("系统异常");
+		}
+	});
+}
+
+	
 
 function shakesuccess(data){
 	var msg = "";

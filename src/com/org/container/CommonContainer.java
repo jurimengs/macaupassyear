@@ -64,6 +64,9 @@ public class CommonContainer {
 	public static void saveDataCacheAndDB(String key, String level, JSONArray data) {
 		// 1保存到缓存
 		dataMap.put(key, data);
+		if(data==null || data.size() <= 0) {
+			return;
+		}
 		// 2保存到数据库
 		Map<Integer, Object> params = new HashMap<Integer, Object>();
 		String upUserAwardSql = "update smp_year_member set rewardstate='"+level+"' where moible in(";

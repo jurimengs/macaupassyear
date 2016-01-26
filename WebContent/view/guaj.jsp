@@ -39,9 +39,9 @@ function touchcallback(percent, mask) {
 $(function(){
 	var expandParams = {};
     var lottery = new Lottery('lotteryContainer', '#CCC', 'color', 138, 50, null, touchcallback);
-    var awardlevel = "${yearMember.rewardstate}";
+    var awardlevel = "${usermeg.rewardstate}";
     var hideward = "";
-    if(!! awardlevel) {
+    if(awardlevel == "1") {
     	hideward = "中 奖 啦！"+awardlevel+" 等 奖";
     } else {
     	hideward = "未   中   奖";

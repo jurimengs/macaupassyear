@@ -38,7 +38,7 @@ public class ParentAward {
 	 */
 	public synchronized JSONArray initTemporary(String key, String level, int count){
 		JSONArray userList = getExistintList(key);
-		if(userList == null) {
+		if(userList == null || userList.size() <= 0) {
 			// 如果已存在，则去除，以防重复抽奖
 			userList = createTemporaryRandomUser(count);
 		}
