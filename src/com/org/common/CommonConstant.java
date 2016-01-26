@@ -59,7 +59,7 @@ public class CommonConstant {
 	public final static String THREE_AWARD_NAME = "澳門通卡1000元";
 	public final static String FOURTH_AWARD_NAME = "澳門通卡500元";
 	public final static String FIFTH_AWARD_NAME = "澳門通卡300元";
-	public final static String LUCKY_AWARD_NAME = "6000元 杉德卡";
+	public final static String LUCKY_AWARD_NAME = "6000元 澳門通卡";
 	
 	//奖品个数
 	public final static int SUPER_AWARD_NUM = 1;

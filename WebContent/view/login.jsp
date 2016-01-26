@@ -86,7 +86,7 @@
 	    <div id="blessDivRight">天<br />下<br />人<br />尽<br />在<br />杉<br />德<br />财<br />富<br />相<br />随</div> -->
     </div>
     <div class="login-head-logo">
-    	<p class="load_big_tit size-xl center">歡迎登入 <span style="color:#ff962d;"> 【澳門通×MOME】年會</span></p>
+    	<p class="load_big_tit size-xl center">歡迎登入 <span style="color:#ff962d;"> 【澳門通 x MOME】年會</span></p>
         
     </div>
     <form action="/macaupassyear/toIndex.do" method="post" id="loginform">
