@@ -19,6 +19,9 @@ public class CommonConstant {
 	// 当前奖项
 	public final static String FLAG_CURRENT_AWARDS = "flagCA"; // 当前奖项。存储到数据库，预防突发终止事件
 
+	// 供应商奖中奖名单
+	public final static String FLAG_SUPPLIER_START = "supplierflag"; // 是否开奖标识 
+	public final static String SUPPLIER_USERLIST = "supplierUserlist";
 	// 特等奖中奖名单
 	public final static String FLAG_SUPER_START = "superflag"; // 是否开奖标识 
 	public final static String SUPER_USERLIST = "superUserlist";
@@ -41,6 +44,7 @@ public class CommonConstant {
 	public final static String FLAG_LUCKY_START = "luckyflag";
 	public final static String LUCKY_USERLIST = "luckyUserlist";
 
+	public final static String AWARD_SUPPLIER = "AwardSupplier";
 	public final static String AWARD_SUPER = "AwardSuper";
 	public final static String AWARD_FIRST = "AwardFirst";
 	public final static String AWARD_SECOND = "AwardSecond";

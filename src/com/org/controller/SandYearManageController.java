@@ -56,6 +56,10 @@ public class SandYearManageController extends SmpHttpServlet implements CommonCo
 			CommonContainer.removeData(CommonConstant.AWARD_SECOND);
 			CommonContainer.removeData(CommonConstant.AWARD_SUPER);
 			CommonContainer.removeData(CommonConstant.AWARD_THIRD);
+			CommonContainer.removeData(CommonConstant.AWARD_SUPPLIER);
+
+			CommonContainer.removeData(CommonConstant.FLAG_SUPPLIER_START);
+			CommonContainer.removeData(CommonConstant.SUPPLIER_USERLIST);
 			
 			CommonContainer.removeData(CommonConstant.FLAG_SUPER_START);
 			CommonContainer.removeData(CommonConstant.SUPER_USERLIST);

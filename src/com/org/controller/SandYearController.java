@@ -49,7 +49,7 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		
 		String currentAwards = "";
 		if(jsonObject == null) {
-			currentAwards = "5";
+			currentAwards = "6";
 		} else {
 			String currentAwardsTemp = jsonObject.getString("currentAward");
 				
@@ -76,6 +76,10 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 				// 当前抽奖设置成特等奖
 				CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_SUPER);
 				CommonContainer.saveData(CommonConstant.FLAG_SUPER_START, "1");	// 设置为开始
+			} else if(currentAwardsTemp.equals("6")) {
+				// 当前抽奖设置成供应商提供奖
+				CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_SUPPLIER);
+				CommonContainer.saveData(CommonConstant.FLAG_SUPPLIER_START, "1");	// 设置为开始
 			}
 			
 			String isStart = jsonObject.getString("isStart");
@@ -101,6 +105,22 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		if(enterpwd.equals(_enterpwd)) {
 			noticeData.put("respCode", "10000");
 			request.getSession().setAttribute("cjmanager", "logined");
+		} else {
+			noticeData.put("respCode", "");
+			noticeData.put("respMsg", "口令错误");
+		}
+		this.write(noticeData, "utf-8", response);				
+		return;
+	}
+	
+	public void managechecklgn(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String enterpwd = request.getParameter("enterpwd");
+		String _enterpwd = PropertiesUtil.getValue("award", "managepwd");
+		
+		JSONObject noticeData = new JSONObject();
+		if(enterpwd.equals(_enterpwd)) {
+			noticeData.put("respCode", "10000");
+			request.getSession().setAttribute("manage", "logined");
 		} else {
 			noticeData.put("respCode", "");
 			noticeData.put("respMsg", "口令错误");
@@ -552,6 +572,19 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		}
 
 		this.write(result, CommonConstant.UTF8, response);
+		return;
+	}
+
+	public void tomanager(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		HttpSession session = request.getSession();
+		// 抽奖管理员
+		if(session.getAttribute("manage") == null) {
+			// 如果未登录
+			this.forward("/view/managelogin.jsp", request, response);
+			return;
+		}
+		
+		this.forward("/view/datamanage.jsp", request, response);	
 		return;
 	}
 	
