@@ -22,7 +22,7 @@
 	<div class="size-xxl"><strong>${usermeg.tablenum}</strong><span class="size-xs marg_lef_1em">桌</span></div>
     <div class="clear">
     	<div class="fl_left">公司：${usermeg.company }</div>
-        <div class="s_tab fl_right"><a href="/view/map.html">座位图</a></div>
+        <div class="s_tab fl_right"><a href="/view/map.html">座位圖</a></div>
     </div>
 </div>
 <div class="clear">
