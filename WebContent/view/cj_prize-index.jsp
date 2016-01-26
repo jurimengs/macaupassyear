@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>抽奖</title>
+<title>抽獎</title>
 <%@ include file="common.jsp"%>
 <script type="text/javascript" src="/js/jquery-1.11.1.min.js?v=<%=b %>"></script>
 <link href="/data/css/cj_globel.css" rel="stylesheet" type="text/css">
@@ -47,7 +47,7 @@
 	                <div id="tdiv" class="winpri-box-bg center" style="display: none; opacity: 0;">
 	                    <span >
 	                    	<font id="terfont" class="w-level">
-	                    		特等奖
+	                    		特等獎
 	                    	</font>
 	                    </span>
 	                    <input type="hidden" name="selectLeve" id="selectLeve" value="${currentAwards }"/>
@@ -72,11 +72,11 @@
 	                <div id="odiv" class="winpri-simp-box-bg center" style="display:block;">
                     	<font id="opersitTerfont" class="w-level">
                     		<c:if test="${currentAwards eq '6' }">供应商赞助</c:if>
-                    		<c:if test="${currentAwards eq '5' }">五等奖</c:if>
-                    		<c:if test="${currentAwards eq '4' }">四等奖</c:if>
-                    		<c:if test="${currentAwards eq '3' }">三等奖</c:if>
-                    		<c:if test="${currentAwards eq '2' }">二等奖</c:if>
-                    		<c:if test="${currentAwards eq '1' }">一等奖</c:if>
+                    		<c:if test="${currentAwards eq '5' }">五等獎</c:if>
+                    		<c:if test="${currentAwards eq '4' }">四等獎</c:if>
+                    		<c:if test="${currentAwards eq '3' }">三等獎</c:if>
+                    		<c:if test="${currentAwards eq '2' }">二等獎</c:if>
+                    		<c:if test="${currentAwards eq '1' }">一等獎</c:if>
                     	</font>
                     </div>
                     <!-- chuizi -->
@@ -128,12 +128,12 @@
 		    <div class="modal-bg bg-right"></div> 
 			<button class="close" onclick="document.getElementById('bucjmask').style.display='none'; "><h1 style="display:block; margin-top:0px;"><img src="/data/images/close.png" width="32" height="32"></h1>
 			</button>
-			<div class="top-mid-bg" id="drawNumber"><font class="top-mid-txt">请设置补抽奖的个数</font></div>
+			<div class="top-mid-bg" id="drawNumber"><font class="top-mid-txt">請設置補抽獎的個數</font></div>
 			<div class="modal-body" id="drawList" style="text-align:center;">
 				<form action="/macaupassyear/tobucj.do" onsubmit="return submitToBucj();" method="post" target="_blank">
 					<input type="text" id="buCounts" name="buCounts" />
 					<input type="hidden" id="currentLevel" name="currentAwards" value="${currentAwards }" />
-					<input type="submit" class="btn" value="进入补抽奖" />
+					<input type="submit" class="btn" value="進入補抽獎" />
 				</form>
 			</div>
 		</div>
@@ -230,19 +230,19 @@ function draw_success(data, status){
 		if(currentLevel=='5'){
 			$("#selectLeve").val("4");
 			$("#opersitTerfont").text("四等奖");
-			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下五等奖获得者</font>";
+			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下五等獎獲得者</font>";
 			document.getElementById("drawNumber").innerHTML=drawNumHtml;
 		}
 		if(currentLevel=='4'){
 			$("#selectLeve").val("3");
 			$("#opersitTerfont").text("三等奖");
-			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下四等奖获得者</font>";
+			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下四等獎獲得者</font>";
 			document.getElementById("drawNumber").innerHTML=drawNumHtml;
 		}
 		if(currentLevel=='3'){
 			$("#selectLeve").val("2");
 			$("#opersitTerfont").text("二等奖");
-			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下三等奖获得者</font>";
+			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下三等獎獲得者</font>";
 			document.getElementById("drawNumber").innerHTML=drawNumHtml;
 		}
 		if(currentLevel=='2'){

@@ -71,11 +71,11 @@
 	                <!-- wudengjiang sidengjiang sandengjiang -->
 	                <div id="odiv" class="winpri-simp-box-bg center" style="background-size: 400px auto;display:block;">
                     	<font id="opersitTerfont" class="w-level">
-                    		<c:if test="${currentAwards eq '5' }">补抽五等奖</c:if>
-                    		<c:if test="${currentAwards eq '4' }">补抽四等奖</c:if>
-                    		<c:if test="${currentAwards eq '3' }">补抽三等奖</c:if>
-                    		<c:if test="${currentAwards eq '2' }">补抽二等奖</c:if>
-                    		<c:if test="${currentAwards eq '1' }">补抽一等奖</c:if>
+                    		<c:if test="${currentAwards eq '5' }">補抽五等獎</c:if>
+                    		<c:if test="${currentAwards eq '4' }">補抽四等獎</c:if>
+                    		<c:if test="${currentAwards eq '3' }">補抽三等獎</c:if>
+                    		<c:if test="${currentAwards eq '2' }">補抽二等獎</c:if>
+                    		<c:if test="${currentAwards eq '1' }">補抽一等獎</c:if>
                     	</font>
                     </div>
                     <!-- chuizi -->
@@ -111,7 +111,7 @@
         <!--add over-->
 		<button class="close" onclick="document.getElementById('maskid').style.display='none'; "><h1 style="display:block; margin-top:0px;"><img src="../data/images/close.png" width="32" height="32"></h1>
 		</button>
-		<div class="top-mid-bg" id="drawNumber"><font class="top-mid-txt">恭喜以下五等奖获得者</font></div>
+		<div class="top-mid-bg" id="drawNumber"><font class="top-mid-txt">恭喜以下五等獎獲得者</font></div>
 		<div class="modal-body" id="drawList">
             
         </div>
@@ -191,20 +191,20 @@ function draw_success(data, status){
 		var currentLevel = $("#selectLeve").val();
 		if(currentLevel=='5'){
 			$("#selectLeve").val("4");
-			$("#opersitTerfont").text("补抽四等奖");
-			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下五等奖获得者</font>";
+			$("#opersitTerfont").text("補抽四等獎");
+			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下五等獎獲得者</font>";
 			document.getElementById("drawNumber").innerHTML=drawNumHtml;
 		}
 		if(currentLevel=='4'){
 			$("#selectLeve").val("3");
-			$("#opersitTerfont").text("补抽三等奖");
-			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下四等奖获得者</font>";
+			$("#opersitTerfont").text("補抽三等獎");
+			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下四等獎獲得者</font>";
 			document.getElementById("drawNumber").innerHTML=drawNumHtml;
 		}
 		if(currentLevel=='3'){
 			$("#selectLeve").val("2");
-			$("#opersitTerfont").text("补抽二等奖");
-			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下三等奖获得者</font>";
+			$("#opersitTerfont").text("補抽二等獎");
+			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下三等獎獲得者</font>";
 			document.getElementById("drawNumber").innerHTML=drawNumHtml;
 		}
 		if(currentLevel=='2'){
