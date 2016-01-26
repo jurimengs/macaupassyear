@@ -54,6 +54,10 @@ public class UserManager {
 	}
 	
 	public static void initUserInfo(){
+		userMap = new HashMap<String, JSONObject>();
+		noAwardUser = new JSONArray();
+		userBackup = new JSONArray();
+		
 		// 初始化这三个数据
 		// userMap
 		// allUser
@@ -125,12 +129,6 @@ public class UserManager {
 	
 	public static JSONObject getUser(String phonenum){
 		return userMap.get(phonenum);
-	}
-	
-	public static void restoreToBackup(){
-		noAwardUser = new JSONArray();
-		noAwardUser.addAll(JSONArray.toCollection(userBackup));
-		CommonContainer.saveData(CommonConstant.FLAG_FIFTH_START, "");	// 设置为未开始
 	}
 	
 	/*

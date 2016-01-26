@@ -75,7 +75,7 @@ public class SandYearManageController extends SmpHttpServlet implements CommonCo
 			CommonContainer.removeData(CommonConstant.FLAG_FIFTH_START);
 			CommonContainer.removeData(CommonConstant.FIFTH_USERLIST);
 			
-			UserManager.restoreToBackup();
+			UserManager.initUserInfo();
 			
 			this.write(noticeData, "utf-8", response);	
 		} catch (Exception e) {
