@@ -81,7 +81,7 @@
 <div class=" pos_relative clear">
 	<div class="global-tit-trans"></div>
     <div class="global-titleb">誰中了大獎</div>
-	<div class="global-btn" onclick="getAwardList();">獲獎單</div>
+	<div class="global-btn" onclick="getAwardList();">獲獎名單</div>
 </div>
 <ul class="msg-list-wrap" id="msgid">
 <c:if test="${fn:length(rewardarrary)>0 }">
