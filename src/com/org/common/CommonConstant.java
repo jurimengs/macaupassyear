@@ -1,5 +1,7 @@
 package com.org.common;
 
+import com.org.utils.PropertiesUtil;
+
 public class CommonConstant {
 	
 	public static String UTF8 = "utf-8";
@@ -60,15 +62,17 @@ public class CommonConstant {
 	public final static String FOURTH_AWARD_NAME = "澳門通卡500元";
 	public final static String FIFTH_AWARD_NAME = "澳門通卡300元";
 	public final static String LUCKY_AWARD_NAME = "6000元 澳門通卡";
+	public final static String SUPPLIER_AWARD_NAME = "供应商赞助礼品";
 	
 	//奖品个数
-	public final static int SUPER_AWARD_NUM = 1;
-	public final static int FIRST_AWARD_NUM = 2;
-	public final static int SECOND_AWARD_NUM = 10;
-	public final static int THREE_AWARD_NUM = 20;
-	public final static int FOURTH_AWARD_NUM = 50;
-	public final static int FIFTH_AWARD_NUM = 100;
-	public final static int LUCKY_AWARD_NUM = 1;
+	public final static int SUPER_AWARD_NUM = Integer.valueOf(PropertiesUtil.getValue("award", "t"));
+	public final static int FIRST_AWARD_NUM = Integer.valueOf(PropertiesUtil.getValue("award", "1"));
+	public final static int SECOND_AWARD_NUM = Integer.valueOf(PropertiesUtil.getValue("award", "2"));
+	public final static int THREE_AWARD_NUM = Integer.valueOf(PropertiesUtil.getValue("award", "3"));
+	public final static int FOURTH_AWARD_NUM = Integer.valueOf(PropertiesUtil.getValue("award", "4"));
+	public final static int FIFTH_AWARD_NUM = Integer.valueOf(PropertiesUtil.getValue("award", "5"));
+	public final static int LUCKY_AWARD_NUM = Integer.valueOf(PropertiesUtil.getValue("award", "x"));
+	public final static int SUPPLIER_AWARD_NUM = Integer.valueOf(PropertiesUtil.getValue("award", "6"));
 	
 	public static final Integer ASC = -1;
 	//　如果分页的条数超过 50000了，将对查询进行优化，这个量是用于区分分页条数是否超标

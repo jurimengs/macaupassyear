@@ -137,7 +137,7 @@ public class MessageController extends SmpHttpServlet implements CommonControlle
 			temp.put(CommonConstant.AWARD_LUCKY, "");
 		}
 		if(g != null) {
-			temp.put(CommonConstant.AWARD_SUPPLIER, f);
+			temp.put(CommonConstant.AWARD_SUPPLIER, g);
 		}else{
 			temp.put(CommonConstant.AWARD_SUPPLIER, "");
 		}
