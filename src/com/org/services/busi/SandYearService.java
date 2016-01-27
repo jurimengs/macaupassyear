@@ -90,10 +90,9 @@ public class SandYearService {
 				CommonDao commonDao = (CommonDao)SpringUtil.getBean("commonDao");
 				JSONObject sym = commonDao.querySingle(sql, params, false);
 				
-				String sql1="select * from smp_year_member where tableNum=? and company=?";//同桌信息
+				String sql1="select * from smp_year_member where tableNum=?";//同桌信息
 				Map<Integer , Object> param = new HashMap<Integer, Object>();
 				param.put(1, sym.getString("tablenum"));
-				param.put(2, sym.getString("company"));
 				allSym = commonDao.queryJSONArray(sql1, param, false);
 				response.put("usermeg", sym);
 				response.put("resultInfo", allSym);

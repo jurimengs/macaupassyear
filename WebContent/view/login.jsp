@@ -93,7 +93,7 @@
     <div class="load-input">
 		<!-- <input type="text" placeholder="姓名" id="userName" class="input loadinbg center">
         <div class="load-inp-line"></div> -->
-		<input type="tel" placeholder="手機號碼" id="phoneNumber" class="input loadinbg center" >
+		<input placeholder="手機號碼" id="phoneNumber" class="input loadinbg center" >
 	</div>
 	</form>
 	
