@@ -500,6 +500,14 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		Map<String,String> paramsMap = this.getParamMap(request);
 		JSONObject noticeData = new JSONObject();
 		JSONArray currentAwardUserList = new JSONArray();
+		int aimcount = Integer.valueOf(paramsMap.get("buCounts"));
+		int realcount = UserManager.getAllNoAwardUser().size();
+		if(realcount < aimcount) {
+			noticeData.put("respCode", "");
+			noticeData.put("respMsg", "未中奖的人只剩"+realcount+"个啦, 最多只能抽"+realcount+"个奖");
+			this.write(noticeData, "utf-8", response);
+			return;
+		}
 		AwardManager msgHander = new AwardManager(paramsMap);
 		currentAwardUserList = msgHander.getMessage();
 		if(currentAwardUserList != null && !currentAwardUserList.isEmpty()) {
