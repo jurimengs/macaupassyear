@@ -65,7 +65,7 @@ public class CommonConstant {
 	public final static String FOURTH_AWARD_NAME = "澳門通卡500元";
 	public final static String FIFTH_AWARD_NAME = "澳門通卡300元";
 	public final static String LUCKY_AWARD_NAME = "6000元 澳門通卡";
-	public final static String SUPPLIER_AWARD_NAME = "供应商赞助礼品";
+	public final static String SUPPLIER_AWARD_NAME = "商戶贊助獎";
 	
 	//奖品个数
 	public final static int SUPER_AWARD_NUM = Integer.valueOf(PropertiesUtil.getValue("award", "t"));

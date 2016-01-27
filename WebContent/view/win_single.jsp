@@ -297,7 +297,7 @@ $(document).ready(function(){
 			var json6 = jsonData[AWARDSUPPLIER];
 			var flag6 = cookie.get("flag6");
 			if(json6.length>0){
-				html += '<div class="clear"><div class="global-tit-trans"></div><div class="global-titleb">供应商赞助（<font>'+SUPPLIERWARDNUM+'</font>名）<span class="vote-num">'+SUPPLIERWARDAME+'</span></div></div><div class="global-nav-winpri"><ul>';
+				html += '<div class="clear"><div class="global-tit-trans"></div><div class="global-titleb">商戶贊助獎（<font>'+SUPPLIERWARDNUM+'</font>名）<span class="vote-num">'+SUPPLIERWARDAME+'</span></div></div><div class="global-nav-winpri"><ul>';
 				if(json6.length>12){
 					for(var i=0;i<11;i++){
 						html += '<li class="pri-cell fl_left">'+json6[i].memname+'<h5 class="sub_name"> '+json6[i].company+'</h5></li>';
