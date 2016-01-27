@@ -96,7 +96,15 @@ public class SandYearManageController extends SmpHttpServlet implements CommonCo
 		String memname = request.getParameter("memname");
 		String moible = request.getParameter("moible");
 		String company = request.getParameter("company");
+		String tablenum = request.getParameter("tablenum");
 		try {
+			
+			if(StringUtils.isEmpty(tablenum)) {
+				noticeData.put("respCode", "");		
+				noticeData.put("respMsg", "×ÀºÅ²»ÄÜÎª¿Õ");
+				this.write(noticeData, "utf-8", response);	
+				return;
+			}
 			
 			if(StringUtils.isEmpty(memname)) {
 				noticeData.put("respCode", "");		
@@ -120,11 +128,12 @@ public class SandYearManageController extends SmpHttpServlet implements CommonCo
 				return;
 			}
 			
-			String sql = "insert into smp_year_member (memname, moible, company) values (?, ?, ?)";
+			String sql = "insert into smp_year_member (memname, moible, company, tablenum) values (?, ?, ?, ?)";
 			Map<Integer , Object> params = new HashMap<Integer, Object>();
 			params.put(1, memname);
 			params.put(2, moible);
 			params.put(3, company);
+			params.put(4, tablenum);
 			CommonDao commonDao = (CommonDao)SpringUtil.getBean("commonDao");
 			boolean res = commonDao.addSingle(sql, params);
 			if(res) {
