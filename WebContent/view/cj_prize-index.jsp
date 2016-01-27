@@ -71,7 +71,7 @@
 	                <!-- wudengjiang sidengjiang sandengjiang -->
 	                <div id="odiv" class="winpri-simp-box-bg center" style="display:block;">
                     	<font id="opersitTerfont" class="w-level">
-                    		<c:if test="${currentAwards eq '6' }">供应商赞助</c:if>
+                    		<c:if test="${currentAwards eq '6' }">商戶贊助獎</c:if>
                     		<c:if test="${currentAwards eq '5' }">五等獎</c:if>
                     		<c:if test="${currentAwards eq '4' }">四等獎</c:if>
                     		<c:if test="${currentAwards eq '3' }">三等獎</c:if>
@@ -112,7 +112,7 @@
 	       <!--add over-->
 		<button class="close" onclick="document.getElementById('maskid').style.display='none'; "><h1 style="display:block; margin-top:0px;"><img src="/data/images/close.png" width="32" height="32"></h1>
 		</button>
-		<div class="top-mid-bg" id="drawNumber"><font class="top-mid-txt">恭喜供应商赞助礼品获得者</font></div>
+		<div class="top-mid-bg" id="drawNumber"><font class="top-mid-txt">恭喜商戶贊助獎获得者</font></div>
 		<div class="modal-body" id="drawList"></div>
 	</div>
 </div>
@@ -225,7 +225,7 @@ function draw_success(data, status){
 		if(currentLevel=='6'){
 			$("#selectLeve").val("5");
 			$("#opersitTerfont").text("五等奖");
-			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜供应商赞助礼品获得者</font>";
+			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜商戶贊助獎获得者</font>";
 			document.getElementById("drawNumber").innerHTML=drawNumHtml;
 		}
 		if(currentLevel=='5'){

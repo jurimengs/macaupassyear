@@ -416,7 +416,7 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		} else {
 			yService.saveCurrentAward(level, "1");
 			noticeData.put("respCode", "");
-			noticeData.put("respMsg", "奖池中没有用户中奖，请用户参与");
+			noticeData.put("respMsg", "獎池中沒有用戶中獎，請用戶參與");
 			
 		}
 		
@@ -504,7 +504,7 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		int realcount = UserManager.getAllNoAwardUser().size();
 		if(realcount < aimcount) {
 			noticeData.put("respCode", "");
-			noticeData.put("respMsg", "未中奖的人只剩"+realcount+"个啦, 最多只能抽"+realcount+"个奖");
+			noticeData.put("respMsg", "未中獎的人只剩"+realcount+"个啦, 最多只能抽"+realcount+"个獎");
 			this.write(noticeData, "utf-8", response);
 			return;
 		}
@@ -587,7 +587,7 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		
 		JSONObject result = new JSONObject();
 		result.put("respCode", "");
-		result.put("respMsg", "还未开始");
+		result.put("respMsg", "還未開始");
 
 		if(CommonContainer.getData(CommonConstant.FLAG_FOURTH_START) != null) {
 			if(CommonContainer.getData(CommonConstant.FLAG_THIRD_START) == null) {
@@ -612,14 +612,14 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		// 先判断有没有中奖
 		if(StringUtils.isNotEmpty(userTemp.getString("rewardstate"))) {
 			result.put("respCode", "");
-			result.put("respMsg", "您已中奖, 不能再参与此次抽奖");
+			result.put("respMsg", "您已中獎, 不能再參與此次抽獎");
 			return result;
 		}
 		
 		// 进入抽奖队列,等三等奖 特等奖抽奖
 		UserManager.addUserToTemporary(moible);
 		result.put("respCode", "10000");
-		result.put("respMsg", "您已进入抽奖队列,请等候抽奖结果");
+		result.put("respMsg", "您已進入抽獎隊列,請等候抽獎結果");
 		return result;
 	}
 	
@@ -634,7 +634,7 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 		JSONObject result = new JSONObject();
 		if(StringUtils.isNotEmpty(usermeg.getString("rewardstate")) && !usermeg.getString("rewardstate").equals("1")) {
 			result.put("respCode", "");
-			result.put("respMsg", "您已中其他奖，不能再参加此次抽奖了");
+			result.put("respMsg", "您已中獎, 不能再參與此次抽獎了");
 		} else {
 			result.put("respCode", "10000");
 			result.put("respMsg", "");

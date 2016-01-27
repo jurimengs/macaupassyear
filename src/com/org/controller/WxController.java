@@ -35,10 +35,10 @@ public class WxController extends SmpHttpServlet implements CommonController{
 			
 			boolean signResult = WxUtil.checkSignature(wxsignature, wxtimestamp, nonce);
 			if(!signResult) {
-				log.info("验签错误");
+				log.info("驗簽錯誤");
 				return;
 			}
-			log.info("验签成功");
+			log.info("難答成功");
 			// 表示是首次验签
 			this.write(echostr, CT.ENCODE_UTF8, response);
 			return;
