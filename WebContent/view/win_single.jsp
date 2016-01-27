@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="/data/css/base.css" type="text/css">
 	<link rel="stylesheet" href="/data/css/public.css" type="text/css">
 	<link rel="stylesheet" href="/data/css/index.css" type="text/css">
+	<script src="/data/js/zepto.min.js" type="text/javascript"></script>
 </head>
 <body class="body-bg">
 <!--页头-->
@@ -26,7 +27,6 @@
 <script language="javascript" src="/data/js/footer.js?v=<%=b %>" id="footerScript" data-args="selecttype=index"></script>
 
 <!--页尾 结束-->
-<script src="/data/js/zepto.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="/data/js/base.js"></script>
 <script type="text/javascript" src="/data/js/service.js"></script> 
 <script type="text/javascript" src="/js/cookie.min.js"></script>
@@ -38,6 +38,7 @@ var AwardThree = "<%=CommonConstant.AWARD_THIRD%>";
 var AwardSecond = "<%=CommonConstant.AWARD_SECOND%>";
 var AwardFirst = "<%=CommonConstant.AWARD_FIRST%>";
 var AwardLucky = "<%=CommonConstant.AWARD_LUCKY%>";
+var AWARDSUPPLIER = "<%=CommonConstant.AWARD_SUPPLIER%>";
 
 var FifthAwardName = "<%=CommonConstant.FIFTH_AWARD_NAME%>";
 var FourthAwardName = "<%=CommonConstant.FOURTH_AWARD_NAME%>";
@@ -45,6 +46,7 @@ var ThreeAwardName = "<%=CommonConstant.THREE_AWARD_NAME%>";
 var SecondAwardName = "<%=CommonConstant.SECOND_AWARD_NAME%>";
 var FirstAwardName = "<%=CommonConstant.FIRST_AWARD_NAME%>";
 var LuckyAwardName = "<%=CommonConstant.LUCKY_AWARD_NAME%>";
+var SUPPLIERWARDAME = "<%=CommonConstant.SUPPLIER_AWARD_NAME%>";
 
 var FifthAwardNum = "<%=CommonConstant.FIFTH_AWARD_NUM%>";
 var FourthAwardNum = "<%=CommonConstant.FOURTH_AWARD_NUM%>";
@@ -52,6 +54,7 @@ var ThreeAwardNum = "<%=CommonConstant.THREE_AWARD_NUM%>";
 var SecondAwardNum = "<%=CommonConstant.SECOND_AWARD_NUM%>";
 var FirstAwardNum = "<%=CommonConstant.FIRST_AWARD_NUM%>";
 var LuckyAwardNum = "<%=CommonConstant.LUCKY_AWARD_NUM%>";
+var SUPPLIERWARDNUM = "<%=CommonConstant.SUPPLIER_AWARD_NUM%>";
 
 /* cookie.set("flag4", "test");
 alert(cookie.get("flag4")); */
@@ -291,6 +294,44 @@ $(document).ready(function(){
 				}
 			}
 			
+			var json6 = jsonData[AWARDSUPPLIER];
+			var flag6 = cookie.get("flag6");
+			if(json6.length>0){
+				html += '<div class="clear"><div class="global-tit-trans"></div><div class="global-titleb">供应商赞助（<font>'+SUPPLIERWARDNUM+'</font>名）<span class="vote-num">'+SUPPLIERWARDAME+'</span></div></div><div class="global-nav-winpri"><ul>';
+				if(json6.length>12){
+					for(var i=0;i<11;i++){
+						html += '<li class="pri-cell fl_left">'+json6[i].memname+'<h5 class="sub_name"> '+json6[i].company+'</h5></li>';
+					}
+					html += '<div id="backAWARDSUPPLIER" ';
+					if(flag6 == "true"){
+						html += 'style="display:none;">';
+					}else{
+						html += 'style="display:block;">';
+					}
+					for(var i=11;i<json6.length;i++){
+						html += '<li class="pri-cell fl_left">'+json6[i].memname+'<h5 class="sub_name"> '+json6[i].company+'</h5></li>';
+					}
+					html += '</div><div id="openAWARDSUPPLIER" ';
+					if(flag6 == "true"){
+						html += 'style="display:block;">';
+					}else{
+						html += 'style="display:none;">';
+					}
+					html += '<li class="pri-cell fl_left"><div class="spead-btn" onclick="openAWARDSUPPLIER();">展开</div></li></div><div id="closeAwardFirst" ';
+					if(flag6 == "true"){
+						html += 'style="display:none;">';
+					}else{
+						html += 'style="display:block;">';
+					}
+					html += '<li class="pri-cell fl_left"><div class="spead-btn" onclick="closeAWARDSUPPLIER();">收起</div></li></div></ul></div>';
+				}else{
+					for(var i=0;i<json6.length;i++){
+						html += '<li class="pri-cell fl_left">'+json6[i].memname+'<h5 class="sub_name"> '+json6[i].company+'</h5></li>';
+					}
+					html += '</ul></div>';
+				}
+			}
+			
 		    $("#tt").empty();
 		    $("#tt").append(html);
 		}
@@ -384,6 +425,21 @@ function closeAwardLucky(){
 	document.getElementById("backLuckyList").style.display = "none";
 	document.getElementById("openAwardLucky").style.display = "block";
 	document.getElementById("closeAwardLucky").style.display = "none";
+}
+
+////////////// 
+function openAWARDSUPPLIER(){
+	cookie.set("flag6","false");
+	document.getElementById("backAWARDSUPPLIER").style.display = "block";
+	document.getElementById("openAWARDSUPPLIER").style.display = "none";
+	document.getElementById("closeAWARDSUPPLIER").style.display = "block";
+}
+
+function closeAWARDSUPPLIER(){
+	cookie.set("flag6","true");
+	document.getElementById("backAWARDSUPPLIER").style.display = "none";
+	document.getElementById("openAWARDSUPPLIER").style.display = "block";
+	document.getElementById("closeAWARDSUPPLIER").style.display = "none";
 }
 </script>
 </body>

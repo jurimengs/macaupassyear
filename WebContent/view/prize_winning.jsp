@@ -52,7 +52,7 @@
 var sh;
 
 $(function(){
-	var s = ${yearMember.rewardstate};
+	var s = "${yearMember.rewardstate}";
 	var strTransfer = fmtRewardState(s);
 	document.getElementById("sss").innerHTML = strTransfer;
 });
@@ -113,6 +113,9 @@ var nextpage = true;
 function fmtRewardState(types){
 	if(types=='5'){
 		return "五等";
+	}else if(types=='6'){
+		// 原来中了供应商赞助奖会undefind
+		return "供应商赞助";
 	}else if(types=='4'){
 		return "四等";
 	}else if(types=='3'){
