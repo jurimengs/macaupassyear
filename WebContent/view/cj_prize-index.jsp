@@ -240,8 +240,10 @@ function draw_success(data, status){
 			document.getElementById("drawNumber").innerHTML=drawNumHtml;
 		}
 		if(currentLevel=='3'){
-			$("#selectLeve").val("2");
-			$("#opersitTerfont").text("二等奖");
+// 			$("#selectLeve").val("2");
+// 			$("#opersitTerfont").text("二等奖");
+			$("#selectLeve").val("1");
+			$("#opersitTerfont").text("一等奖");
 			var drawNumHtml = "<font class=\"top-mid-txt\">恭喜以下三等獎獲得者</font>";
 			document.getElementById("drawNumber").innerHTML=drawNumHtml;
 		}
@@ -291,13 +293,14 @@ function draw_success(data, status){
 				arrtemp[indextemp] = drawList[i];
 			 
 			}
-			
+			var index = 1;
 			for(var n=0; n<arr.length; n++){
 				var linearr = arr[n];
 				prizehtml+="<ul><li>";
 				for(var j=0; j<linearr.length; j++){
 					var temp = linearr[j];
-					prizehtml+="<div class=\"person_box fl_left\"><strong>"+temp.memname+"<span class=\"com_name\">"+temp.company+"</span></strong><dt>"+temp.moible+"</dt></div>";
+					prizehtml+="<div class=\"person_box fl_left\"><strong>"+index+":"+temp.memname+"<span class=\"com_name\">"+temp.company+"</span></strong><dt>"+temp.moible+"</dt></div>";
+					index ++;
 				}
 				prizehtml+="</li></ul>";
 			}

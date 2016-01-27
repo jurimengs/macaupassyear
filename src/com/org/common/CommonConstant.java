@@ -42,6 +42,9 @@ public class CommonConstant {
 	// 五等奖中奖名单
 	public final static String FLAG_FIFTH_START = "fifthflag";
 	public final static String FIFTH_USERLIST = "fifthUserlist";
+	// 管理层发奖中奖名单
+	public final static String FLAG_MANAGER_START = "managerflag";
+	public final static String MANAGER_USERLIST = "managerUserlist";
 	// 幸运奖中奖名单
 	public final static String FLAG_LUCKY_START = "luckyflag";
 	public final static String LUCKY_USERLIST = "luckyUserlist";

@@ -19,6 +19,7 @@ import com.org.common.CommonConstant;
 import com.org.container.CommonContainer;
 import com.org.container.UserManager;
 import com.org.model.reflect.ReflectUtil;
+import com.org.rute.AwardManager;
 import com.org.rute.MessageHander;
 import com.org.rute.PushMessageRute;
 import com.org.services.busi.SandYearService;
@@ -71,11 +72,7 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 					CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_THIRD);	
 					CommonContainer.saveData(CommonConstant.FLAG_THIRD_START, "1");	// 设置为开始
 				}
-			} else if(currentAwardsTemp.equals("2")) {
-				// 当前抽奖设置成二等奖
-				CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_SECOND);	
-				CommonContainer.saveData(CommonConstant.FLAG_SECOND_START, "1");	// 设置为开始
-			} else if(currentAwardsTemp.equals("1")) {
+			} else if(currentAwardsTemp.equals("2") || currentAwardsTemp.equals("1")) {
 				// 当前抽奖设置成一等奖
 				CommonContainer.saveData(CommonConstant.MESSAGE_TYPE, CommonConstant.AWARD_FIRST);
 				CommonContainer.saveData(CommonConstant.FLAG_FIRST_START, "1");	// 设置为开始
@@ -463,6 +460,51 @@ public class SandYearController extends SmpHttpServlet implements CommonControll
 			// 中奖信息缓存到内存中。方法扩展 ：保存到内存的同时，也保存到数据库
 			// 更新奖项状态到数据库
 			yService.saveCurrentAward(level, "0");
+			noticeData.put("respCode", "10000");
+			noticeData.put("respMsg", "成功");
+			noticeData.put("memArray", currentAwardUserList);
+		} else {
+			
+		}
+		
+		this.write(noticeData, "utf-8", response);
+		return;
+		
+	}
+
+	/**
+	 * 管理层
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	public void tomanagercj(HttpServletRequest request,HttpServletResponse response)
+			throws Exception{
+		String cjmanager = (String)request.getSession().getAttribute("cjmanager");
+		if(!"logined".equals(cjmanager)) {
+			this.forward("/view/cjlogin.jsp", request, response);	
+			return;
+		}
+		
+		this.forward("/view/managercj.jsp", request, response);	
+		return;
+	}
+
+	/**
+	 * 管理层抽奖
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	public void managercj(HttpServletRequest request,HttpServletResponse response)throws Exception{
+		Map<String,String> paramsMap = this.getParamMap(request);
+		JSONObject noticeData = new JSONObject();
+		JSONArray currentAwardUserList = new JSONArray();
+		AwardManager msgHander = new AwardManager(paramsMap);
+		currentAwardUserList = msgHander.getMessage();
+		if(currentAwardUserList != null && !currentAwardUserList.isEmpty()) {
+			// 中奖信息缓存到内存中。方法扩展 ：保存到内存的同时，也保存到数据库
+			// 更新奖项状态到数据库
 			noticeData.put("respCode", "10000");
 			noticeData.put("respMsg", "成功");
 			noticeData.put("memArray", currentAwardUserList);
