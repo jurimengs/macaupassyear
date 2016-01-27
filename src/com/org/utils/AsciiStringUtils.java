@@ -131,10 +131,13 @@ public class AsciiStringUtils {
 
 	public static void main(String[] args) throws IOException {
 
-		String s = "好好张2";
-		System.out.println(string2ASCIIString(s));
-		System.out.println();
-		System.out.println(ascii2String(string2ASCIIArray(s)));
+		String s = "张三,李四,张三,李四,张三,李四";
+		String[] strlist = s.split(",");
+		for (int i = 0; i < strlist.length; i++) {
+			System.out.println(string2ASCIIString(strlist[i]));
+		}
+//		System.out.println();
+//		System.out.println(ascii2String(string2ASCIIArray(s)));
 
 		createFile("c://console_ch.txt", getCHASCII(0, 50000));
 	}
