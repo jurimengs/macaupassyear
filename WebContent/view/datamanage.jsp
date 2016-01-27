@@ -13,26 +13,18 @@
 <table>
  <tr>
   <td>手机号:(请输入要修改目标用户的手机号)</td>
- </tr>
- <tr>
   <td><input type="text" id="mobile"/></td>
  </tr>
  <tr>
   <td>姓名：(请输入目标用户的新的姓名)</td>
- </tr>
- <tr>
   <td><input type="text" id="memname"/></td>
  </tr>
  <tr>
   <td>桌位：(请输入目标用户的新的桌位号)</td>
- </tr>
- <tr>
   <td><input type="text" id="tablenum"/></td>
  </tr>
  <tr>
   <td>新手机号：(请输入目标用户的新的手机号)</td>
- </tr>
- <tr>
   <td><input type="text" id="newMobile"/></td>
  </tr>
  
@@ -46,6 +38,7 @@
  </tr>
 </table>
 <br /><br />
+<input type="button" onclick="addMem()" value="新增人员信息"/><br /><br />
 <input type="button" onclick="updateMem()" value="修改人员信息"/><br /><br />
 <input type="button"  value="清空抽奖状态" onclick="updateYear('1')"/><br /><br />
 <input type="button"  value="清空用户中奖信息" onclick="updateYear('2')"/><br /><br />
@@ -115,6 +108,26 @@ function updateMem(){
 			tablenum:tablenum,
 			seatnum:seatnum,
 			newMobile:newMobile,
+			mobile:mobile
+		},
+		dataType:"json",
+		cache:"false",
+		success:update_success,
+		error:update_error
+	});
+}
+
+function addMem(){
+	var memname = $('#memname').val();
+	var company = $('#company').val();
+	var mobile = $('#mobile').val();
+	
+	$.ajax({
+		type:"post",
+		url:"/macaupassyearmanage/addMem.do",
+		data:{
+			memname:memname,
+			company:company,
 			mobile:mobile
 		},
 		dataType:"json",

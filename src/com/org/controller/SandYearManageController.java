@@ -14,10 +14,12 @@ import org.springframework.stereotype.Controller;
 import com.org.common.CommonConstant;
 import com.org.container.CommonContainer;
 import com.org.container.UserManager;
+import com.org.dao.CommonDao;
 import com.org.services.busi.SandYearService;
 import com.org.servlet.CommonController;
 import com.org.servlet.SmpHttpServlet;
 import com.org.util.SpringUtil;
+import com.org.utils.AsciiStringUtils;
 
 @Controller
 public class SandYearManageController extends SmpHttpServlet implements CommonController{
@@ -87,6 +89,65 @@ public class SandYearManageController extends SmpHttpServlet implements CommonCo
 		}	
 		
 		return;
+	}
+	
+	public void addMem(HttpServletRequest request, HttpServletResponse response){
+		JSONObject noticeData = new JSONObject();
+		String memname = request.getParameter("memname");
+		String moible = request.getParameter("moible");
+		String company = request.getParameter("company");
+		String tablenum = request.getParameter("tablenum");
+		try {
+			
+			if(StringUtils.isEmpty(tablenum)) {
+				noticeData.put("respCode", "");		
+				noticeData.put("respMsg", "桌号不能为空");
+				this.write(noticeData, "utf-8", response);	
+				return;
+			}
+			
+			if(StringUtils.isEmpty(memname)) {
+				noticeData.put("respCode", "");		
+				noticeData.put("respMsg", "姓名不能为空");
+				this.write(noticeData, "utf-8", response);	
+				return;
+			}
+			
+			if(StringUtils.isEmpty(moible)) {
+				// 如果没有手机号则默认奖姓名的ascii码作为手机号录入
+				moible = AsciiStringUtils.string2ASCIIString(memname);
+			}
+			
+			SandYearService yService = (SandYearService)SpringUtil.getBean("sandYearService");
+			JSONObject json = yService.checkmem(moible);
+			
+			if(json.getString(CommonConstant.RESP_CODE).equals("10000")) {
+				noticeData.put("respCode", "");		
+				noticeData.put("respMsg", "用户已存在");
+				this.write(noticeData, "utf-8", response);	
+				return;
+			}
+			
+			String sql = "insert into smp_year_member (memname, moible, company, tablenum) values (?, ?, ?, ?)";
+			Map<Integer , Object> params = new HashMap<Integer, Object>();
+			params.put(1, memname);
+			params.put(2, moible);
+			params.put(3, company);
+			params.put(4, tablenum);
+			CommonDao commonDao = (CommonDao)SpringUtil.getBean("commonDao");
+			boolean res = commonDao.addSingle(sql, params);
+			if(res) {
+				noticeData.put("respCode", "10000");		
+				noticeData.put("respMsg", "添加成功");
+			} else {
+				noticeData.put("respCode", "");		
+				noticeData.put("respMsg", "添加失败");
+			}
+			this.write(noticeData, "utf-8", response);	
+			return;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
 	}
 	
 	public void updateMem(HttpServletRequest request, HttpServletResponse response){

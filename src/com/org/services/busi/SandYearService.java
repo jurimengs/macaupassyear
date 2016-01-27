@@ -24,15 +24,41 @@ import com.org.utils.StringUtil;
 @Service
 public class SandYearService {
 	
+	public JSONObject checkmem(String phoneNumber){
+		String sql = "select a.* from smp_year_member a where a.moible=?";
+		Map<Integer , Object> params = new HashMap<Integer, Object>();
+		params.put(1, phoneNumber);
+		CommonDao commonDao = (CommonDao)SpringUtil.getBean("commonDao");
+		JSONObject response = new JSONObject();
+		try {
+			JSONObject usermeg = commonDao.querySingle(sql, params, false);
+			if(usermeg==null){
+				response.put(CommonConstant.RESP_CODE, "");
+				response.put(CommonConstant.RESP_MSG, "用户不存在");
+			}else{
+				response.put("usermeg", usermeg);
+				response.put(CommonConstant.RESP_CODE, "10000");
+				response.put(CommonConstant.RESP_MSG, "");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			response.put(CommonConstant.RESP_CODE, "");
+			response.put(CommonConstant.RESP_MSG, e.getMessage());
+		}
+		return response;
+		
+	}
+	
 	public JSONObject queryYearMember( String phoneNumber, String type){
 		JSONObject response = null;
 		JSONArray allSym = new JSONArray();
 		try {
 			response = new JSONObject();			
 			if("1".equals(type)){//登录,返回用户信息,大奖信息
-				String sql = "select a.*, b.roleflag from smp_year_member a left join smp_year_manager b on a.moible = b.moible where a.moible=?";
+				String sql = "select a.*, b.roleflag from smp_year_member a left join smp_year_manager b on a.moible = b.moible where a.moible=? or a.memname =?";
 				Map<Integer , Object> params = new HashMap<Integer, Object>();
 				params.put(1, phoneNumber);
+				params.put(2, phoneNumber);
 				CommonDao commonDao = (CommonDao)SpringUtil.getBean("commonDao");
 				JSONObject sym = commonDao.querySingle(sql, params, false);
 				if(sym==null){
