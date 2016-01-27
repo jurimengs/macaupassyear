@@ -51,7 +51,7 @@
                     	</font>
                     </div>
 	                <div class="center">
-	                	<input placeholder="请输入奖品个数" style="border: 1px solid #333; opacity: 0.5;" id="buCounts" name="buCounts"  />
+	                	<input placeholder="请输入奖品个数" style="text-align: center; border: 1px solid #333; opacity: 0.5;" id="buCounts" name="buCounts"  />
 	                	<input type="hidden" name="selectLeve" id="selectLeve" value="7"/>
                     </div>
                     <!-- chuizi -->
