@@ -162,10 +162,11 @@ function checklgn(){
 		showerror("请输入姓名！");
 		return false;
 	} */
-	if(!reg.test(mobile)) {
+	/* if(!reg.test(mobile)) {
 		alert("请输入正确的手机号码！");
 		return false;
-	}
+	} */
+	
 	$.ajax({
 		type:"post",
 		url:"/macaupassyear/queryYearMember.do",
