@@ -139,7 +139,7 @@
 		</div>
 	</div>
 
-<div><a style="color: red; position: absolute; top: 96%;" href="/macaupassyear/tomanagercj.do">管理层抽奖</a></div>
+<div><a style="color: red; position: absolute; top: 96%;" target="_blank" href="/macaupassyear/tomanagercj.do">管理层抽奖</a></div>
 </body>
 <script type="text/javascript">
 
